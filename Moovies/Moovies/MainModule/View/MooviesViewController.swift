@@ -16,9 +16,9 @@ class MooviesViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        getPopularRequest(moovies: films, tableView: tableView)
         setupTableView()
         setupSegmentControl()
+        getPopularRequest(moovies: films, tableView: tableView)
     }
 
     // MARK: Private Methods
@@ -35,18 +35,23 @@ class MooviesViewController: UIViewController {
         switch segmentControl.selectedSegmentIndex {
         case 0:
             getPopularRequest(moovies: films, tableView: tableView)
+            title = "Популярные"
         case 1:
             // getTopRatedRequest(moovies: films, tableView: tableView)
-            presentor?.getTopRatedRequest(moovies: films, tableView: tableView, title: "Топ-фильмов")
+            presentor?.getTopRatedRequest()
+            tableView.reloadData()
+            title = "Топ-100 рейтинга"
         case 2:
             getUpcomingRequest(moovies: films, tableView: tableView)
+            title = "Скоро на экранах"
+
         default:
             getPopularRequest(moovies: films, tableView: tableView)
+            title = "Популярные"
         }
     }
 
     private func setupTableView() {
-        title = "Топ-100"
         view.backgroundColor = .white
         navigationController?.navigationBar.isTranslucent = false
         navigationController?.navigationBar.shadowImage = UIImage()
@@ -66,40 +71,6 @@ class MooviesViewController: UIViewController {
         ])
     }
 
-    private func getTopRatedRequest(moovies: Film, tableView: UITableView) {
-        title = "Топ-100 за все время"
-        films = Film(results: [], totalResults: 0, totalPages: 0, page: 0)
-        for page in 1 ... 5 {
-            guard let url =
-                URL(
-                    string: "https://api.themoviedb.org/3/movie/top_rated?api_key=209be2942f86f39dd556564d2ad35c5c&language=ru-RU&page=\(page)"
-                )
-            else { return }
-
-            URLSession.shared.dataTask(with: url) { data, response, _ in
-                guard let usageData = data,
-                      let usageResponse = response as? HTTPURLResponse else { return }
-                print("status code: \(usageResponse.statusCode)")
-
-                do {
-                    let decoder = JSONDecoder()
-                    decoder.keyDecodingStrategy = .convertFromSnakeCase
-                    let pageMovies = try decoder.decode(Film.self, from: usageData)
-                    if self.films.results != nil {
-                        self.films.results += pageMovies.results
-                    } else {
-                        self.films = pageMovies
-                    }
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                    }
-                } catch {
-                    print("Error")
-                }
-            }.resume()
-        }
-    }
-
     private func getPopularRequest(moovies: Film, tableView: UITableView) {
         title = "Популярные фильмы"
         films = Film(results: [], totalResults: 0, totalPages: 0, page: 0)
@@ -111,19 +82,15 @@ class MooviesViewController: UIViewController {
             else { return }
 
             URLSession.shared.dataTask(with: url) { data, response, _ in
-                guard let usageData = data,
-                      let usageResponse = response as? HTTPURLResponse else { return }
-                print("status code: \(usageResponse.statusCode)")
+                guard let usageData = data else { return }
 
                 do {
                     let decoder = JSONDecoder()
                     decoder.keyDecodingStrategy = .convertFromSnakeCase
                     let pageMovies = try decoder.decode(Film.self, from: usageData)
-                    if self.films.results != nil {
-                        self.films.results += pageMovies.results
-                    } else {
-                        self.films = pageMovies
-                    }
+
+                    self.films.results += pageMovies.results
+
                     DispatchQueue.main.async {
                         self.tableView.reloadData()
                     }
@@ -135,12 +102,11 @@ class MooviesViewController: UIViewController {
     }
 
     private func getUpcomingRequest(moovies: Film, tableView: UITableView) {
-        title = "Скоро на экранах"
         films = Film(results: [], totalResults: 0, totalPages: 0, page: 0)
         for page in 1 ... 5 {
             guard let url =
                 URL(
-                    string: "https://api.themoviedb.org/3/movie/upcoming?api_key=209be2942f86f39dd556564d2ad35c5c&language=ru-RU&page=\(page)"
+                    string: "https://api.themoviedb.org/3/movie/top_rated?api_key=209be2942f86f39dd556564d2ad35c5c&language=ru-RU&page=\(page)"
                 )
             else { return }
 
@@ -194,5 +160,11 @@ extension MooviesViewController: UITableViewDataSource {
         cell.configureCell(films: films, indexPath: indexPath)
         cell.selectionStyle = .none
         return cell
+    }
+}
+
+extension MooviesViewController: MainViewProtocol {
+    func reloadTable() {
+        tableView.reloadData()
     }
 }

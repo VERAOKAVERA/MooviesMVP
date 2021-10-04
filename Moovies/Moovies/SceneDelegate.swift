@@ -13,6 +13,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     ) {
         guard let _ = (scene as? UIWindowScene) else { return }
         let vc = MooviesViewController()
+        let films = Film(results: [], totalResults: 0, totalPages: 0, page: 0)
+        let presenter = MainPresentor(view: vc, model: films)
+        vc.presentor = presenter
         let navigationController = UINavigationController(rootViewController: vc)
         window?.rootViewController = navigationController
         navigationController.navigationBar.backgroundColor = .systemPink

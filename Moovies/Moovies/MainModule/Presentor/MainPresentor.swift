@@ -4,17 +4,27 @@
 import Foundation
 import UIKit
 
-protocol MainViewProtocol: AnyObject {}
+protocol MainViewProtocol: AnyObject {
+    func reloadTable()
+}
 
 protocol MainViewPresentorProtocol: AnyObject {
-    init(view: MainViewProtocol, moovieModel: Film)
-    func getTopRatedRequest(moovies: Film, tableView: UITableView, title: String)
+    init(view: MainViewProtocol, model: Film)
+    func getTopRatedRequest()
+//    func getPopularRequest()
+//    func getUpcomingRequest()
 }
 
 class MainPresentor: MainViewPresentorProtocol {
-    func getTopRatedRequest(moovies: Film, tableView: UITableView, title: String = "") {
-        var title = "Топ-100 за все время"
-        var moovies = Film(results: [], totalResults: 0, totalPages: 0, page: 0)
+    var view: MainViewProtocol
+    var films: Film
+    required init(view: MainViewProtocol, model: Film) {
+        self.view = view
+        films = model
+    }
+
+    func getTopRatedRequest() {
+        films = Film(results: [], totalResults: 0, totalPages: 0, page: 0)
         for page in 1 ... 5 {
             guard let url =
                 URL(
@@ -23,34 +33,20 @@ class MainPresentor: MainViewPresentorProtocol {
             else { return }
 
             URLSession.shared.dataTask(with: url) { data, response, _ in
-                guard let usageData = data,
-                      let usageResponse = response as? HTTPURLResponse else { return }
-                print("status code: \(usageResponse.statusCode)")
-
+                guard let usageData = data else { return }
                 do {
                     let decoder = JSONDecoder()
                     decoder.keyDecodingStrategy = .convertFromSnakeCase
                     let pageMovies = try decoder.decode(Film.self, from: usageData)
-                    if moovies.results != nil {
-                        moovies.results += pageMovies.results
-                    } else {
-                        moovies = pageMovies
-                    }
-                    DispatchQueue.main.async {
-                        tableView.reloadData()
-                    }
+                    self.films.results += pageMovies.results
+
+//                    DispatchQueue.main.async {
+//                        self.view.reloadTable()
+//                    }
                 } catch {
                     print("Error")
                 }
             }.resume()
         }
-    }
-
-    var view: MainViewProtocol
-    var moovieModel: Film
-
-    required init(view: MainViewProtocol, moovieModel: Film) {
-        self.view = view
-        self.moovieModel = moovieModel
     }
 }

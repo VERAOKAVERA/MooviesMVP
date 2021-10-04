@@ -6,7 +6,7 @@ import UIKit
 class MooviesViewController: UIViewController {
     // MARK: Private Properties
 
-    private var films = Film(results: [], totalResults: 0, totalPages: 0, page: 0)
+    var films = Film(results: [], totalResults: 0, totalPages: 0, page: 0)
     var presentor: MainViewPresentorProtocol!
 
     // MARK: Private Visual Components
@@ -18,7 +18,7 @@ class MooviesViewController: UIViewController {
         super.viewDidLoad()
         setupTableView()
         setupSegmentControl()
-        getPopularRequest(moovies: films, tableView: tableView)
+        // getPopularRequest(tableView: tableView)
     }
 
     // MARK: Private Methods
@@ -34,19 +34,21 @@ class MooviesViewController: UIViewController {
     @objc func segmentedValueChanged(_ sender: UISegmentedControl!) {
         switch segmentControl.selectedSegmentIndex {
         case 0:
-            getPopularRequest(moovies: films, tableView: tableView)
+            // getPopularRequest(tableView: tableView)
+
             title = "Популярные"
         case 1:
             // getTopRatedRequest(moovies: films, tableView: tableView)
-            presentor?.getTopRatedRequest()
+            films = (presentor?.getTopRatedRequest())!
             tableView.reloadData()
             title = "Топ-100 рейтинга"
         case 2:
-            getUpcomingRequest(moovies: films, tableView: tableView)
+            // getUpcomingRequest(tableView: tableView)
+            // reloadTable()
             title = "Скоро на экранах"
 
         default:
-            getPopularRequest(moovies: films, tableView: tableView)
+            // getPopularRequest(tableView: tableView)
             title = "Популярные"
         }
     }
@@ -71,9 +73,7 @@ class MooviesViewController: UIViewController {
         ])
     }
 
-    private func getPopularRequest(moovies: Film, tableView: UITableView) {
-        title = "Популярные фильмы"
-        films = Film(results: [], totalResults: 0, totalPages: 0, page: 0)
+    private func getPopularRequest(tableView: UITableView) {
         for page in 1 ... 5 {
             guard let url =
                 URL(
@@ -101,7 +101,7 @@ class MooviesViewController: UIViewController {
         }
     }
 
-    private func getUpcomingRequest(moovies: Film, tableView: UITableView) {
+    private func getUpcomingRequest(tableView: UITableView) {
         films = Film(results: [], totalResults: 0, totalPages: 0, page: 0)
         for page in 1 ... 5 {
             guard let url =

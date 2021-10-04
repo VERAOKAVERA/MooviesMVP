@@ -8,11 +8,27 @@ protocol MainViewProtocol: AnyObject {
     func reloadTable()
 }
 
+enum MoviesType {
+    case topRated
+    case popular
+    case upcoming
+
+    var urlPath: String {
+        switch self {
+        case .popular:
+            return "popular"
+        case .topRated:
+            return "top_rated"
+        case .upcoming:
+            return "upcoming"
+        }
+    }
+}
+
 protocol MainViewPresentorProtocol: AnyObject {
     init(view: MainViewProtocol, model: Film)
-    func getTopRatedRequest() -> Film
-//    func getPopularRequest()
-//    func getUpcomingRequest()
+    var films: Film { get }
+    func getMoviesOfType(_ type: MoviesType)
 }
 
 class MainPresentor: MainViewPresentorProtocol {
@@ -23,14 +39,15 @@ class MainPresentor: MainViewPresentorProtocol {
         films = model
     }
 
-    func getTopRatedRequest() -> Film {
+    func getMoviesOfType(_ type: MoviesType) {
         films = Film(results: [], totalResults: 0, totalPages: 0, page: 0)
+        view.reloadTable()
         for page in 1 ... 5 {
             guard let url =
                 URL(
-                    string: "https://api.themoviedb.org/3/movie/top_rated?api_key=209be2942f86f39dd556564d2ad35c5c&language=ru-RU&page=\(page)"
+                    string: "https://api.themoviedb.org/3/movie/\(type.urlPath)?api_key=209be2942f86f39dd556564d2ad35c5c&language=ru-RU&page=\(page)"
                 )
-            else { return films }
+            else { return }
 
             URLSession.shared.dataTask(with: url) { data, _, _ in
                 guard let usageData = data else { return }
@@ -39,11 +56,13 @@ class MainPresentor: MainViewPresentorProtocol {
                     decoder.keyDecodingStrategy = .convertFromSnakeCase
                     let pageMovies = try decoder.decode(Film.self, from: usageData)
                     self.films.results += pageMovies.results
+                    DispatchQueue.main.async {
+                        self.view.reloadTable()
+                    }
                 } catch {
                     print("Error")
                 }
             }.resume()
         }
-        return films
     }
 }

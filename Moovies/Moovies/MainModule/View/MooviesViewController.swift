@@ -4,9 +4,8 @@
 import UIKit
 
 class MooviesViewController: UIViewController {
-    // MARK: Private Properties
+    // MARK: Iternal Properties
 
-    var films = Film(results: [], totalResults: 0, totalPages: 0, page: 0)
     var presentor: MainViewPresentorProtocol!
 
     // MARK: Private Visual Components
@@ -18,7 +17,7 @@ class MooviesViewController: UIViewController {
         super.viewDidLoad()
         setupTableView()
         setupSegmentControl()
-        // getPopularRequest(tableView: tableView)
+        presentor?.getMoviesOfType(.popular)
     }
 
     // MARK: Private Methods
@@ -34,22 +33,16 @@ class MooviesViewController: UIViewController {
     @objc func segmentedValueChanged(_ sender: UISegmentedControl!) {
         switch segmentControl.selectedSegmentIndex {
         case 0:
-            // getPopularRequest(tableView: tableView)
-
+            presentor?.getMoviesOfType(.popular)
             title = "Популярные"
         case 1:
-            // getTopRatedRequest(moovies: films, tableView: tableView)
-            films = (presentor?.getTopRatedRequest())!
-            tableView.reloadData()
+            presentor?.getMoviesOfType(.topRated)
             title = "Топ-100 рейтинга"
         case 2:
-            // getUpcomingRequest(tableView: tableView)
-            // reloadTable()
+            presentor?.getMoviesOfType(.upcoming)
             title = "Скоро на экранах"
 
-        default:
-            // getPopularRequest(tableView: tableView)
-            title = "Популярные"
+        default: break
         }
     }
 
@@ -72,74 +65,13 @@ class MooviesViewController: UIViewController {
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
-
-    private func getPopularRequest(tableView: UITableView) {
-        for page in 1 ... 5 {
-            guard let url =
-                URL(
-                    string: "https://api.themoviedb.org/3/movie/popular?api_key=209be2942f86f39dd556564d2ad35c5c&language=ru-RU&page=\(page)"
-                )
-            else { return }
-
-            URLSession.shared.dataTask(with: url) { data, response, _ in
-                guard let usageData = data else { return }
-
-                do {
-                    let decoder = JSONDecoder()
-                    decoder.keyDecodingStrategy = .convertFromSnakeCase
-                    let pageMovies = try decoder.decode(Film.self, from: usageData)
-
-                    self.films.results += pageMovies.results
-
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                    }
-                } catch {
-                    print("Error")
-                }
-            }.resume()
-        }
-    }
-
-    private func getUpcomingRequest(tableView: UITableView) {
-        films = Film(results: [], totalResults: 0, totalPages: 0, page: 0)
-        for page in 1 ... 5 {
-            guard let url =
-                URL(
-                    string: "https://api.themoviedb.org/3/movie/top_rated?api_key=209be2942f86f39dd556564d2ad35c5c&language=ru-RU&page=\(page)"
-                )
-            else { return }
-
-            URLSession.shared.dataTask(with: url) { data, response, _ in
-                guard let usageData = data,
-                      let usageResponse = response as? HTTPURLResponse else { return }
-                print("status code: \(usageResponse.statusCode)")
-
-                do {
-                    let decoder = JSONDecoder()
-                    decoder.keyDecodingStrategy = .convertFromSnakeCase
-                    let pageMovies = try decoder.decode(Film.self, from: usageData)
-                    if self.films.results != nil {
-                        self.films.results += pageMovies.results
-                    } else {
-                        self.films = pageMovies
-                    }
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                    }
-                } catch {
-                    print("Error")
-                }
-            }.resume()
-        }
-    }
 }
 
 // MARK: Extension
 
 extension MooviesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let identificator = films.results[indexPath.row].id
+        let identificator = presentor.films.results[indexPath.row].id
         let descriptionVC = MoovieDescriptionTableViewController()
         descriptionVC.movieID = identificator
         navigationController?.pushViewController(descriptionVC, animated: true)
@@ -148,7 +80,7 @@ extension MooviesViewController: UITableViewDelegate {
 
 extension MooviesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let countFilms = films.results.count
+        let countFilms = presentor.films.results.count
         return countFilms
     }
 
@@ -157,7 +89,7 @@ extension MooviesViewController: UITableViewDataSource {
             withIdentifier: "mooviesTableViewCell",
             for: indexPath
         ) as? MooviesTableViewCell else { return UITableViewCell() }
-        cell.configureCell(films: films, indexPath: indexPath)
+        cell.configureCell(films: presentor.films, indexPath: indexPath)
         cell.selectionStyle = .none
         return cell
     }

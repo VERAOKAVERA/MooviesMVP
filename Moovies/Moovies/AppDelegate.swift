@@ -9,12 +9,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
+        setupNavigationBar()
+        return true
+    }
+
+    func setupNavigationBar() {
         UINavigationBar.appearance().isTranslucent = false
         UINavigationBar.appearance().barTintColor = .systemPink
         UINavigationBar.appearance().tintColor = UIColor.white
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-
-        return true
     }
 
     // MARK: UISceneSession Lifecycle

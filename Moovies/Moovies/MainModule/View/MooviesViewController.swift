@@ -11,7 +11,7 @@ class MooviesViewController: UIViewController {
     // MARK: Private Visual Components
 
     private var segmentControl = UISegmentedControl(items: ["Популярные", "Топ-100", "Скоро"])
-    internal var tableView = UITableView()
+    private var tableView = UITableView()
 
     override func viewDidLoad() {
         super.viewDidLoad()

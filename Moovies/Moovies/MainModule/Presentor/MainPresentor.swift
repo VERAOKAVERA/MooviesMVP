@@ -32,7 +32,7 @@ protocol MainViewPresentorProtocol: AnyObject {
 }
 
 class MainPresentor: MainViewPresentorProtocol {
-    var view: MainViewProtocol
+    weak var view: MainViewProtocol?
     var films: Film
     required init(view: MainViewProtocol, model: Film) {
         self.view = view
@@ -41,7 +41,7 @@ class MainPresentor: MainViewPresentorProtocol {
 
     func getMoviesOfType(_ type: MoviesType) {
         films = Film(results: [], totalResults: 0, totalPages: 0, page: 0)
-        view.reloadTable()
+        view?.reloadTable()
         for page in 1 ... 5 {
             guard let url =
                 URL(
@@ -57,7 +57,7 @@ class MainPresentor: MainViewPresentorProtocol {
                     let pageMovies = try decoder.decode(Film.self, from: usageData)
                     self.films.results += pageMovies.results
                     DispatchQueue.main.async {
-                        self.view.reloadTable()
+                        self.view?.reloadTable()
                     }
                 } catch {
                     print("Error")

@@ -3,10 +3,10 @@
 
 import UIKit
 
-class MoovieDescriptionTableViewController: UITableViewController {
+final class MoovieDescriptionTableViewController: UITableViewController {
     // MARK: Enum
 
-    enum Cells {
+    enum CellsType {
         case poster
         case overview
     }
@@ -18,7 +18,7 @@ class MoovieDescriptionTableViewController: UITableViewController {
     // MARK: Private Properties
 
     private var details: Description?
-    private let cells: [Cells] = [.poster, .overview]
+    private let cells: [CellsType] = [.poster, .overview]
     private let identifires = [PosterTableViewCell.identifier, OverviewTableViewCell.identifier]
 
     // MARK: Life Cycle View Controller

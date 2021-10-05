@@ -71,10 +71,14 @@ class MooviesViewController: UIViewController {
 
 extension MooviesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let identificator = presentor.films.results[indexPath.row].id
-        let descriptionVC = MoovieDescriptionTableViewController()
-        descriptionVC.movieID = identificator
-        navigationController?.pushViewController(descriptionVC, animated: true)
+//        let identificator = presentor.films.results[indexPath.row].movieID
+        let descriptionVC = ModulesBuilder.buildDetail(film: presentor.films.results[indexPath.row])
+        descriptionVC.modalPresentationStyle = .fullScreen
+        present(descriptionVC, animated: true)
+//        let identificator = presentor.films.results[indexPath.row]
+//        let descriptionVC = MoovieDescriptionTableViewController()
+//        descriptionVC.presentor.
+//        navigationController?.pushViewController(descriptionVC, animated: true)
     }
 }
 

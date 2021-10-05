@@ -6,7 +6,7 @@ import UIKit
 
 protocol Builder {
     static func buildMain() -> UIViewController
-    static func buildDetail(film: Result?) -> UIViewController
+    static func buildDetail(film: Result?, id: Int) -> UIViewController
 }
 
 final class ModulesBuilder: Builder {
@@ -19,11 +19,11 @@ final class ModulesBuilder: Builder {
         return view
     }
 
-    static func buildDetail(film: Result?) -> UIViewController {
+    static func buildDetail(film: Result?, id: Int) -> UIViewController {
         // let service = MovieAPIService()
         let view = MoovieDescriptionTableViewController()
         let description = Description(posterPath: "", title: "", overview: "")
-        let id = Result(posterPath: "", overview: "", title: "", releaseDate: "", id: 0, voteAverage: 0)
+//        let id = Result(posterPath: "", overview: "", title: "", releaseDate: "", id: 0, voteAverage: 0)
         let presenter = DescriptionPresentor(view: view, model: description, id: id)
         view.presentor = presenter
         return view

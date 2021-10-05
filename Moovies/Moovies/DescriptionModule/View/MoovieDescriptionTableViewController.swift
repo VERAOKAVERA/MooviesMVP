@@ -18,7 +18,7 @@ final class MoovieDescriptionTableViewController: UITableViewController {
 
     // MARK: Private Properties
 
-    private var details: Description?
+    // private var details: Description?
     private let cells: [CellsType] = [.poster, .overview]
     private let identifires = [PosterTableViewCell.identifier, OverviewTableViewCell.identifier]
 
@@ -38,16 +38,16 @@ final class MoovieDescriptionTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let detail = presentor?.details else { return UITableViewCell() }
+        guard let details = presentor?.details else { return UITableViewCell() }
         let cell = tableView.dequeueReusableCell(withIdentifier: identifires[indexPath.row], for: indexPath)
-        title = details?.title
+        title = details.title
         switch cells[indexPath.row] {
         case .poster:
             guard let posterCell = cell as? PosterTableViewCell else { return UITableViewCell() }
-            posterCell.configureCell(details: detail, indexPath: indexPath)
+            posterCell.configureCell(details: details, indexPath: indexPath)
         case .overview:
             guard let overviewCell = cell as? OverviewTableViewCell else { return UITableViewCell() }
-            overviewCell.configureCell(details: detail, indexPath: indexPath)
+            overviewCell.configureCell(details: details, indexPath: indexPath)
         }
         return cell
     }

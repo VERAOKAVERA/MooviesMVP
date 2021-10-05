@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		12896AC626CCF56000622B65 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12896AC526CCF56000622B65 /* Result.swift */; };
+		129E1C92270B103800BA7BCF /* MainPresentor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129E1C91270B103800BA7BCF /* MainPresentor.swift */; };
 		12E2F74B26CC3C12004E5367 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E2F74A26CC3C12004E5367 /* AppDelegate.swift */; };
 		12E2F74D26CC3C12004E5367 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E2F74C26CC3C12004E5367 /* SceneDelegate.swift */; };
 		12E2F75226CC3C12004E5367 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12E2F75026CC3C12004E5367 /* Main.storyboard */; };
@@ -24,6 +25,7 @@
 
 /* Begin PBXFileReference section */
 		12896AC526CCF56000622B65 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		129E1C91270B103800BA7BCF /* MainPresentor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresentor.swift; sourceTree = "<group>"; };
 		12E2F74726CC3C12004E5367 /* Moovies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moovies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		12E2F74A26CC3C12004E5367 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		12E2F74C26CC3C12004E5367 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,6 +53,53 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		129E1C90270B101900BA7BCF /* Presentor */ = {
+			isa = PBXGroup;
+			children = (
+				129E1C91270B103800BA7BCF /* MainPresentor.swift */,
+			);
+			path = Presentor;
+			sourceTree = "<group>";
+		};
+		129E1C93270B13E000BA7BCF /* MainModule */ = {
+			isa = PBXGroup;
+			children = (
+				129E1C95270B141200BA7BCF /* View */,
+				129E1C94270B140700BA7BCF /* Model */,
+				129E1C90270B101900BA7BCF /* Presentor */,
+			);
+			path = MainModule;
+			sourceTree = "<group>";
+		};
+		129E1C94270B140700BA7BCF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				12E2F76826CC3DE1004E5367 /* Moovie.swift */,
+				12896AC526CCF56000622B65 /* Result.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		129E1C95270B141200BA7BCF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				12E2F76C26CC3E47004E5367 /* MooviesViewController.swift */,
+				12E2F75E26CC3CF5004E5367 /* MooviesTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		129E1C96270B144400BA7BCF /* DescriptionModule */ = {
+			isa = PBXGroup;
+			children = (
+				12E2F76226CC3D4A004E5367 /* PosterTableViewCell.swift */,
+				12E2F76026CC3D32004E5367 /* OverviewTableViewCell.swift */,
+				12E2F76A26CC3E0F004E5367 /* MoovieDescriptionTableViewController.swift */,
+				12E2F76626CC3DC7004E5367 /* MoovieDescription.swift */,
+			);
+			path = DescriptionModule;
+			sourceTree = "<group>";
+		};
 		12E2F73E26CC3C11004E5367 = {
 			isa = PBXGroup;
 			children = (
@@ -70,38 +119,16 @@
 		12E2F74926CC3C12004E5367 /* Moovies */ = {
 			isa = PBXGroup;
 			children = (
-				12E2F76F26CC3E74004E5367 /* Controllers */,
-				12E2F76E26CC3E68004E5367 /* Model */,
+				129E1C96270B144400BA7BCF /* DescriptionModule */,
+				129E1C93270B13E000BA7BCF /* MainModule */,
 				12E2F74A26CC3C12004E5367 /* AppDelegate.swift */,
-				12896AC526CCF56000622B65 /* Result.swift */,
 				12E2F74C26CC3C12004E5367 /* SceneDelegate.swift */,
 				12E2F75026CC3C12004E5367 /* Main.storyboard */,
 				12E2F75326CC3C1C004E5367 /* Assets.xcassets */,
 				12E2F75526CC3C1C004E5367 /* LaunchScreen.storyboard */,
 				12E2F75826CC3C1C004E5367 /* Info.plist */,
-				12E2F76026CC3D32004E5367 /* OverviewTableViewCell.swift */,
-				12E2F76226CC3D4A004E5367 /* PosterTableViewCell.swift */,
-				12E2F76626CC3DC7004E5367 /* MoovieDescription.swift */,
-				12E2F76826CC3DE1004E5367 /* Moovie.swift */,
-				12E2F76A26CC3E0F004E5367 /* MoovieDescriptionTableViewController.swift */,
-				12E2F76C26CC3E47004E5367 /* MooviesViewController.swift */,
-				12E2F75E26CC3CF5004E5367 /* MooviesTableViewCell.swift */,
 			);
 			path = Moovies;
-			sourceTree = "<group>";
-		};
-		12E2F76E26CC3E68004E5367 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		12E2F76F26CC3E74004E5367 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -114,6 +141,8 @@
 				12E2F74326CC3C12004E5367 /* Sources */,
 				12E2F74426CC3C12004E5367 /* Frameworks */,
 				12E2F74526CC3C12004E5367 /* Resources */,
+				129E1C97270B261F00BA7BCF /* SwiftFormat */,
+				129E1C98270B26A100BA7BCF /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -169,6 +198,45 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		129E1C97270B261F00BA7BCF /* SwiftFormat */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftFormat;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftformat >/dev/null; then\n  swiftformat .\nelse\n  echo \"warning: SwiftFormat not installed, download from https://github.com/nicklockwood/SwiftFormat\"\nfi\n";
+		};
+		129E1C98270B26A100BA7BCF /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		12E2F74326CC3C12004E5367 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -177,6 +245,7 @@
 				12E2F76926CC3DE1004E5367 /* Moovie.swift in Sources */,
 				12E2F76326CC3D4A004E5367 /* PosterTableViewCell.swift in Sources */,
 				12E2F76D26CC3E47004E5367 /* MooviesViewController.swift in Sources */,
+				129E1C92270B103800BA7BCF /* MainPresentor.swift in Sources */,
 				12E2F74B26CC3C12004E5367 /* AppDelegate.swift in Sources */,
 				12E2F75F26CC3CF5004E5367 /* MooviesTableViewCell.swift in Sources */,
 				12E2F76726CC3DC7004E5367 /* MoovieDescription.swift in Sources */,

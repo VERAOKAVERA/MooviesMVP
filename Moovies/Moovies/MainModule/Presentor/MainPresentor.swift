@@ -26,7 +26,6 @@ enum MoviesType {
 }
 
 protocol MainViewPresentorProtocol: AnyObject {
-    init(view: MainViewProtocol, model: Film)
     var films: Film { get }
     func getMoviesOfType(_ type: MoviesType)
 }
@@ -34,7 +33,7 @@ protocol MainViewPresentorProtocol: AnyObject {
 class MainPresentor: MainViewPresentorProtocol {
     weak var view: MainViewProtocol?
     var films: Film
-    required init(view: MainViewProtocol, model: Film) {
+    init(view: MainViewProtocol, model: Film) {
         self.view = view
         films = model
     }

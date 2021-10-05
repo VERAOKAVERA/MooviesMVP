@@ -15,34 +15,28 @@ protocol DescriptionViewPresentorProtocol: AnyObject {
 }
 
 class DescriptionPresentor: DescriptionViewPresentorProtocol {
+    private var movieAPIservice: MovieAPIServiceProtocol
     weak var view: DescriptionViewProtocol?
     var details: Description
     var ide: Int
-    init(view: DescriptionViewProtocol, model: Description, id: Int) {
+    init(view: DescriptionViewProtocol, model: Description, id: Int, service: MovieAPIService) {
         self.view = view
         details = model
         ide = id
+        movieAPIservice = service
     }
 
     func getMoovieDescription() {
-        guard let url =
-            URL(
-                string: "https://api.themoviedb.org/3/movie/\(ide)?api_key=209be2942f86f39dd556564d2ad35c5c&language=ru-RU"
-            )
-        else { return }
-        URLSession.shared.dataTask(with: url) { data, _, _ in
-            guard let usageData = data else { return }
-
-            do {
-                let decoder = JSONDecoder()
-                decoder.keyDecodingStrategy = .convertFromSnakeCase
-                self.details = try decoder.decode(Description.self, from: usageData)
+        movieAPIservice.getMovieDescriptionService(id: ide) { [weak self] result in
+            switch result {
+            case let .failure(error):
+                print("APIService error! \(error)")
+            case let .success(filmsResults):
+                self?.details = filmsResults
                 DispatchQueue.main.async {
-                    self.view?.reloadTable()
+                    self?.view?.reloadTable()
                 }
-            } catch {
-                print("Error detail request")
             }
-        }.resume()
+        }
     }
 }

@@ -22,11 +22,11 @@ final class ModulesBuilder: Builder {
     }
 
     static func buildDetail(film: Results?, id: Int) -> UIViewController {
-        // let service = MovieAPIService()
+        let service = MovieAPIService()
 
         let view = MoovieDescriptionTableViewController()
         let description = Description(posterPath: "", title: "", overview: "")
-        let presenter = DescriptionPresentor(view: view, model: description, id: id)
+        let presenter = DescriptionPresentor(view: view, model: description, id: id, service: service)
         view.presentor = presenter
         return view
     }

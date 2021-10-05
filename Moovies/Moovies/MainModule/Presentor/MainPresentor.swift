@@ -8,6 +8,7 @@ protocol MainViewProtocol: AnyObject {
     func reloadTable()
 }
 
+// MARK: - Enum MoviesType
 enum MoviesType {
     case topRated
     case popular
@@ -25,12 +26,16 @@ enum MoviesType {
     }
 }
 
+    // MARK: - MainViewPresentorProtocol
 protocol MainViewPresentorProtocol: AnyObject {
     var films: Film { get }
     func getMoviesOfType(_ type: MoviesType)
 }
 
+    // MARK: - MainPresentor
 class MainPresentor: MainViewPresentorProtocol {
+
+    // MARK: - Private Properties
     private var movieAPIservice: MovieAPIServiceProtocol
     weak var view: MainViewProtocol?
     var films: Film
@@ -40,6 +45,7 @@ class MainPresentor: MainViewPresentorProtocol {
         movieAPIservice = service
     }
 
+    // MARK: - Public func 
     func getMoviesOfType(_ type: MoviesType) {
         films = Film(results: [], totalResults: 0, totalPages: 0, page: 0)
         view?.reloadTable()
@@ -55,27 +61,4 @@ class MainPresentor: MainViewPresentorProtocol {
             }
         }
     }
-//        films = Film(results: [], totalResults: 0, totalPages: 0, page: 0)
-//        view?.reloadTable()
-//
-//            guard let url =
-//                URL(
-//                    string: "https://api.themoviedb.org/3/movie/\(type.urlPath)?api_key=209be2942f86f39dd556564d2ad35c5c&language=ru-RU&page=1"
-//                )
-//            else { return }
-//
-//            URLSession.shared.dataTask(with: url) { data, _, _ in
-//                guard let usageData = data else { return }
-//                do {
-//                    let decoder = JSONDecoder()
-//                    decoder.keyDecodingStrategy = .convertFromSnakeCase
-//                    let pageMovies = try decoder.decode(Film.self, from: usageData)
-//                    self.films.results += pageMovies.results
-//                    DispatchQueue.main.async {
-//                        self.view?.reloadTable()
-//                    }
-//                } catch {
-//                    print("Error")
-//                }
-//            }.resume()
 }

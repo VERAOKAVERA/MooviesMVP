@@ -4,24 +4,20 @@
 import UIKit
 
 final class MoovieDescriptionTableViewController: UITableViewController {
-    // MARK: Enum
-
+    // MARK: - Enum
     enum CellsType {
         case poster
         case overview
     }
 
-    // MARK: Internal Properties
-
+    // MARK: - Internal Properties
     var presentor: DescriptionViewPresentorProtocol!
 
-    // MARK: Private Properties
-
-    // private var details: Description?
+    // MARK: - Private Properties
     private let cells: [CellsType] = [.poster, .overview]
     private let identifires = [PosterTableViewCell.identifier, OverviewTableViewCell.identifier]
 
-    // MARK: Life Cycle View Controller
+    // MARK: - Life Cycle View Controller
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +25,7 @@ final class MoovieDescriptionTableViewController: UITableViewController {
         presentor.getMoovieDescription()
     }
 
-    // MARK: Override Methods
+    // MARK: - Override Methods
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         cells.count
@@ -50,7 +46,7 @@ final class MoovieDescriptionTableViewController: UITableViewController {
         return cell
     }
 
-    // MARK: Private Methods
+    // MARK: - Private Methods
 
     private func setupTableView() {
         tableView.allowsSelection = false

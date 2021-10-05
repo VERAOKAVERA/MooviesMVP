@@ -5,7 +5,6 @@ import UIKit
 
 class MooviesViewController: UIViewController {
     // MARK: Iternal Properties
-
     var presentor: MainViewPresentorProtocol!
 
     // MARK: Private Visual Components

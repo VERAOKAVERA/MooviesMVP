@@ -5,7 +5,7 @@ import Alamofire
 import Foundation
 
 protocol MovieAPIServiceProtocol {
-    func getMoviesOfType(_ type: MoviesType, completion: @escaping (Result<[Results], Error>) -> Void)
+    func getMoviesOfTypeService(_ type: String, completion: @escaping (Result<[Results], Error>) -> Void)
 }
 
 final class MovieAPIService: MovieAPIServiceProtocol {
@@ -15,7 +15,7 @@ final class MovieAPIService: MovieAPIServiceProtocol {
     private let language = "ru-RU"
     private let page = "1"
 
-    func getMoviesOfType(_ type: MoviesType, completion: @escaping (Result<[Results], Error>) -> Void) {
+    func getMoviesOfTypeService(_ type: String, completion: @escaping (Result<[Results], Error>) -> Void) {
         let URL = baseURL + urlPath + "/\(type)"
 
         let parameters = [

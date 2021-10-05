@@ -43,7 +43,7 @@ class MainPresentor: MainViewPresentorProtocol {
     func getMoviesOfType(_ type: MoviesType) {
         films = Film(results: [], totalResults: 0, totalPages: 0, page: 0)
         view?.reloadTable()
-        movieAPIservice.getMoviesOfType(type) { [weak self] result in
+        movieAPIservice.getMoviesOfTypeService(type.urlPath) { [weak self] result in
             switch result {
             case let .failure(error):
                 print("APIService error! \(error)")

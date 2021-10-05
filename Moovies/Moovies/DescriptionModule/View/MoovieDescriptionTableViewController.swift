@@ -14,7 +14,6 @@ final class MoovieDescriptionTableViewController: UITableViewController {
     // MARK: Internal Properties
 
     var presentor: DescriptionViewPresentorProtocol!
-    // var movieID = Int()
 
     // MARK: Private Properties
 
@@ -27,7 +26,6 @@ final class MoovieDescriptionTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
-        // detailRequest()
         presentor.getMoovieDescription()
     }
 

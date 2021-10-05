@@ -1,9 +1,9 @@
-// Result.swift
+// Results.swift
 // Copyright © RoadMap. All rights reserved.
 
 import Foundation
 
-struct Result: Decodable {
+struct Results: Decodable {
     var posterPath: String?
     let overview: String
     let title: String

@@ -5,6 +5,7 @@ import UIKit
 
 final class MooviesViewController: UIViewController {
     // MARK: Iternal Properties
+
     var presentor: MainViewPresentorProtocol!
 
     // MARK: Private Visual Components
@@ -70,11 +71,13 @@ final class MooviesViewController: UIViewController {
 
 extension MooviesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let descriptionVC = ModulesBuilder.buildDetail(
-            film: presentor.films.results[indexPath.row],
-            id: presentor.films.results[indexPath.row].id
-        )
-        present(descriptionVC, animated: true)
+        let film = presentor.films.results[indexPath.row]
+        presentor.openMoovieDescription(film: film)
+        // let descriptionVC = ModulesBuilder.buildDetail(
+        //    film: presentor.films.results[indexPath.row],
+        //   id: presentor.films.results[indexPath.row].id
+        // )
+        // present(descriptionVC, animated: true)
     }
 }
 

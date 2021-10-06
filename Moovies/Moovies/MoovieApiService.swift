@@ -10,7 +10,6 @@ protocol MovieAPIServiceProtocol {
 }
 
 final class MovieAPIService: MovieAPIServiceProtocol {
-
     private let baseURL = "https://api.themoviedb.org"
     private let urlPath = "/3/movie"
     private let APIKey = "9ad7d04f6206bfa729848e1f3f2ffb2d"

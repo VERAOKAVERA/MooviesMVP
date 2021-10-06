@@ -5,15 +5,18 @@ import UIKit
 
 final class MoovieDescriptionTableViewController: UITableViewController {
     // MARK: - Enum
+
     enum CellsType {
         case poster
         case overview
     }
 
     // MARK: - Internal Properties
+
     var presentor: DescriptionViewPresentorProtocol!
 
     // MARK: - Private Properties
+
     private let cells: [CellsType] = [.poster, .overview]
     private let identifires = [PosterTableViewCell.identifier, OverviewTableViewCell.identifier]
 

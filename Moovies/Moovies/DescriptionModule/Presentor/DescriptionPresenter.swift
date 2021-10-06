@@ -17,13 +17,15 @@ protocol DescriptionViewPresentorProtocol: AnyObject {
 class DescriptionPresentor: DescriptionViewPresentorProtocol {
     var details: Description
     var ide: Int
+    var router: RouterProtocol?
 
     private var movieAPIservice: MovieAPIServiceProtocol
     private weak var view: DescriptionViewProtocol?
 
-    init(view: DescriptionViewProtocol, model: Description, id: Int, service: MovieAPIService) {
+    init(view: DescriptionViewProtocol, model: Description, id: Int, service: MovieAPIService, router: RouterProtocol) {
         self.view = view
         details = model
+        self.router = router
         ide = id
         movieAPIservice = service
     }

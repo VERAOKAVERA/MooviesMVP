@@ -12,6 +12,8 @@
 		12289A4C270C74D30024989F /* AssemblyBuilderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12289A4B270C74D30024989F /* AssemblyBuilderProtocol.swift */; };
 		12289A4E270C85BF0024989F /* MoovieApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12289A4D270C85BF0024989F /* MoovieApiService.swift */; };
 		12627A73270DD2CB00F39A6D /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12627A72270DD2CB00F39A6D /* Router.swift */; };
+		12627A7B270DE88E00F39A6D /* MooviesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12627A7A270DE88E00F39A6D /* MooviesTests.swift */; };
+		12627A82270DEB7000F39A6D /* UnitTestRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12627A81270DEB7000F39A6D /* UnitTestRouter.swift */; };
 		12896AC626CCF56000622B65 /* Results.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12896AC526CCF56000622B65 /* Results.swift */; };
 		129E1C92270B103800BA7BCF /* MainPresentor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129E1C91270B103800BA7BCF /* MainPresentor.swift */; };
 		12E2F74B26CC3C12004E5367 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E2F74A26CC3C12004E5367 /* AppDelegate.swift */; };
@@ -28,11 +30,24 @@
 		12E2F76D26CC3E47004E5367 /* MooviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E2F76C26CC3E47004E5367 /* MooviesViewController.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		12627A7C270DE88E00F39A6D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 12E2F73F26CC3C11004E5367 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 12E2F74626CC3C12004E5367;
+			remoteInfo = Moovies;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		12289A49270C6F490024989F /* DescriptionPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionPresenter.swift; sourceTree = "<group>"; };
 		12289A4B270C74D30024989F /* AssemblyBuilderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssemblyBuilderProtocol.swift; sourceTree = "<group>"; };
 		12289A4D270C85BF0024989F /* MoovieApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoovieApiService.swift; sourceTree = "<group>"; };
 		12627A72270DD2CB00F39A6D /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		12627A78270DE88E00F39A6D /* MooviesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MooviesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		12627A7A270DE88E00F39A6D /* MooviesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MooviesTests.swift; sourceTree = "<group>"; };
+		12627A81270DEB7000F39A6D /* UnitTestRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitTestRouter.swift; sourceTree = "<group>"; };
 		12896AC526CCF56000622B65 /* Results.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Results.swift; sourceTree = "<group>"; };
 		129E1C91270B103800BA7BCF /* MainPresentor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresentor.swift; sourceTree = "<group>"; };
 		12E2F74726CC3C12004E5367 /* Moovies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moovies.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -52,6 +67,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		12627A75270DE88E00F39A6D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		12E2F74426CC3C12004E5367 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -96,6 +118,15 @@
 				12627A72270DD2CB00F39A6D /* Router.swift */,
 			);
 			path = Router;
+			sourceTree = "<group>";
+		};
+		12627A79270DE88E00F39A6D /* MooviesTests */ = {
+			isa = PBXGroup;
+			children = (
+				12627A7A270DE88E00F39A6D /* MooviesTests.swift */,
+				12627A81270DEB7000F39A6D /* UnitTestRouter.swift */,
+			);
+			path = MooviesTests;
 			sourceTree = "<group>";
 		};
 		129E1C90270B101900BA7BCF /* Presentor */ = {
@@ -147,6 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				12E2F74926CC3C12004E5367 /* Moovies */,
+				12627A79270DE88E00F39A6D /* MooviesTests */,
 				12E2F74826CC3C12004E5367 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -155,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				12E2F74726CC3C12004E5367 /* Moovies.app */,
+				12627A78270DE88E00F39A6D /* MooviesTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -180,6 +213,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		12627A77270DE88E00F39A6D /* MooviesTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 12627A7E270DE88E00F39A6D /* Build configuration list for PBXNativeTarget "MooviesTests" */;
+			buildPhases = (
+				12627A74270DE88E00F39A6D /* Sources */,
+				12627A75270DE88E00F39A6D /* Frameworks */,
+				12627A76270DE88E00F39A6D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				12627A7D270DE88E00F39A6D /* PBXTargetDependency */,
+			);
+			name = MooviesTests;
+			productName = MooviesTests;
+			productReference = 12627A78270DE88E00F39A6D /* MooviesTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		12E2F74626CC3C12004E5367 /* Moovies */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 12E2F75B26CC3C1C004E5367 /* Build configuration list for PBXNativeTarget "Moovies" */;
@@ -208,9 +259,13 @@
 		12E2F73F26CC3C11004E5367 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1250;
+				LastSwiftUpdateCheck = 1300;
 				LastUpgradeCheck = 1250;
 				TargetAttributes = {
+					12627A77270DE88E00F39A6D = {
+						CreatedOnToolsVersion = 13.0;
+						TestTargetID = 12E2F74626CC3C12004E5367;
+					};
 					12E2F74626CC3C12004E5367 = {
 						CreatedOnToolsVersion = 12.5.1;
 					};
@@ -233,11 +288,19 @@
 			projectRoot = "";
 			targets = (
 				12E2F74626CC3C12004E5367 /* Moovies */,
+				12627A77270DE88E00F39A6D /* MooviesTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		12627A76270DE88E00F39A6D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		12E2F74526CC3C12004E5367 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -290,6 +353,15 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		12627A74270DE88E00F39A6D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				12627A82270DEB7000F39A6D /* UnitTestRouter.swift in Sources */,
+				12627A7B270DE88E00F39A6D /* MooviesTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		12E2F74326CC3C12004E5367 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -314,6 +386,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		12627A7D270DE88E00F39A6D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 12E2F74626CC3C12004E5367 /* Moovies */;
+			targetProxy = 12627A7C270DE88E00F39A6D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		12E2F75026CC3C12004E5367 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -334,6 +414,56 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		12627A7F270DE88E00F39A6D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 36XB4RCQS2;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Vera-Zaitseva.MooviesTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Moovies.app/Moovies";
+			};
+			name = Debug;
+		};
+		12627A80270DE88E00F39A6D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 36XB4RCQS2;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Vera-Zaitseva.MooviesTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Moovies.app/Moovies";
+			};
+			name = Release;
+		};
 		12E2F75926CC3C1C004E5367 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -491,6 +621,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		12627A7E270DE88E00F39A6D /* Build configuration list for PBXNativeTarget "MooviesTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				12627A7F270DE88E00F39A6D /* Debug */,
+				12627A80270DE88E00F39A6D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		12E2F74226CC3C11004E5367 /* Build configuration list for PBXProject "Moovies" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

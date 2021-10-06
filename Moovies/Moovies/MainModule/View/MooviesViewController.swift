@@ -73,11 +73,6 @@ extension MooviesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let film = presentor.films.results[indexPath.row]
         presentor.openMoovieDescription(film: film)
-        // let descriptionVC = ModulesBuilder.buildDetail(
-        //    film: presentor.films.results[indexPath.row],
-        //   id: presentor.films.results[indexPath.row].id
-        // )
-        // present(descriptionVC, animated: true)
     }
 }
 

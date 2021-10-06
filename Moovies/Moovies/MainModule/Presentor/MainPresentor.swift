@@ -35,10 +35,12 @@ protocol MainViewPresentorProtocol: AnyObject {
     // MARK: - MainPresentor
 class MainPresentor: MainViewPresentorProtocol {
 
+    // MARK: - Internal Properties
+    var films: Film
     // MARK: - Private Properties
     private var movieAPIservice: MovieAPIServiceProtocol
-    weak var view: MainViewProtocol?
-    var films: Film
+    private weak var view: MainViewProtocol?
+
     init(view: MainViewProtocol, model: Film, service: MovieAPIServiceProtocol) {
         self.view = view
         films = model

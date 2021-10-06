@@ -3,7 +3,7 @@
 
 import UIKit
 
-class MooviesViewController: UIViewController {
+final class MooviesViewController: UIViewController {
     // MARK: Iternal Properties
     var presentor: MainViewPresentorProtocol!
 

@@ -45,7 +45,7 @@ class PosterTableViewCell: UITableViewCell {
         NSLayoutConstraint.activate([
             posterImageView.topAnchor.constraint(
                 equalTo: safeAreaLayoutGuide.topAnchor,
-                constant: 5
+                constant: 20
             ),
             posterImageView.trailingAnchor.constraint(
                 equalTo: safeAreaLayoutGuide.trailingAnchor,

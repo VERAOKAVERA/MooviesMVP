@@ -3,9 +3,8 @@
 
 import UIKit
 
-class MooviesViewController: UIViewController {
+final class MooviesViewController: UIViewController {
     // MARK: Iternal Properties
-
     var presentor: MainViewPresentorProtocol!
 
     // MARK: Private Visual Components
@@ -42,7 +41,7 @@ class MooviesViewController: UIViewController {
             presentor?.getMoviesOfType(.upcoming)
             title = "Скоро на экранах"
 
-        default: break
+        default: title = "Популярные"
         }
     }
 
@@ -71,10 +70,11 @@ class MooviesViewController: UIViewController {
 
 extension MooviesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let identificator = presentor.films.results[indexPath.row].id
-        let descriptionVC = MoovieDescriptionTableViewController()
-        descriptionVC.movieID = identificator
-        navigationController?.pushViewController(descriptionVC, animated: true)
+        let descriptionVC = ModulesBuilder.buildDetail(
+            film: presentor.films.results[indexPath.row],
+            id: presentor.films.results[indexPath.row].id
+        )
+        present(descriptionVC, animated: true)
     }
 }
 

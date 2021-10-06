@@ -4,7 +4,7 @@
 import Foundation
 
 struct Film: Decodable {
-    var results: [Result]
+    var results: [Results]
     let totalResults: Int
     let totalPages: Int
     let page: Int

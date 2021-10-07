@@ -14,6 +14,14 @@
 		12627A73270DD2CB00F39A6D /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12627A72270DD2CB00F39A6D /* Router.swift */; };
 		12627A7B270DE88E00F39A6D /* MooviesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12627A7A270DE88E00F39A6D /* MooviesTests.swift */; };
 		12627A82270DEB7000F39A6D /* UnitTestRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12627A81270DEB7000F39A6D /* UnitTestRouter.swift */; };
+		1274AAEF270F1AB8001BE63A /* DataStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1274AAEE270F1AB8001BE63A /* DataStorageService.swift */; };
+		1274AAF2270F1D5C001BE63A /* DataStorage.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1274AAF0270F1D5C001BE63A /* DataStorage.xcdatamodeld */; };
+		1274AAF4270F5E20001BE63A /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1274AAF3270F5E20001BE63A /* Repository.swift */; };
+		1274AAF8270F8BA3001BE63A /* CacheImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1274AAF7270F8BA3001BE63A /* CacheImageService.swift */; };
+		1274AAFA270F8BCD001BE63A /* ImageAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1274AAF9270F8BCD001BE63A /* ImageAPIService.swift */; };
+		1274AAFC270F8BEA001BE63A /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1274AAFB270F8BEA001BE63A /* ImageService.swift */; };
+		1274AAFE270F8C0E001BE63A /* Proxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1274AAFD270F8C0E001BE63A /* Proxy.swift */; };
+		1274AB01270F8C98001BE63A /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = 1274AB00270F8C98001BE63A /* AlamofireImage */; };
 		12896AC626CCF56000622B65 /* Results.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12896AC526CCF56000622B65 /* Results.swift */; };
 		129E1C92270B103800BA7BCF /* MainPresentor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129E1C91270B103800BA7BCF /* MainPresentor.swift */; };
 		12E2F74B26CC3C12004E5367 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E2F74A26CC3C12004E5367 /* AppDelegate.swift */; };
@@ -48,6 +56,13 @@
 		12627A78270DE88E00F39A6D /* MooviesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MooviesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		12627A7A270DE88E00F39A6D /* MooviesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MooviesTests.swift; sourceTree = "<group>"; };
 		12627A81270DEB7000F39A6D /* UnitTestRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitTestRouter.swift; sourceTree = "<group>"; };
+		1274AAEE270F1AB8001BE63A /* DataStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorageService.swift; sourceTree = "<group>"; };
+		1274AAF1270F1D5C001BE63A /* DataStorage.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataStorage.xcdatamodel; sourceTree = "<group>"; };
+		1274AAF3270F5E20001BE63A /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		1274AAF7270F8BA3001BE63A /* CacheImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheImageService.swift; sourceTree = "<group>"; };
+		1274AAF9270F8BCD001BE63A /* ImageAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAPIService.swift; sourceTree = "<group>"; };
+		1274AAFB270F8BEA001BE63A /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
+		1274AAFD270F8C0E001BE63A /* Proxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Proxy.swift; sourceTree = "<group>"; };
 		12896AC526CCF56000622B65 /* Results.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Results.swift; sourceTree = "<group>"; };
 		129E1C91270B103800BA7BCF /* MainPresentor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresentor.swift; sourceTree = "<group>"; };
 		12E2F74726CC3C12004E5367 /* Moovies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moovies.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -79,6 +94,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				12289A45270C5E0C0024989F /* Alamofire in Frameworks */,
+				1274AB01270F8C98001BE63A /* AlamofireImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,6 +211,12 @@
 		12E2F74926CC3C12004E5367 /* Moovies */ = {
 			isa = PBXGroup;
 			children = (
+				1274AAFD270F8C0E001BE63A /* Proxy.swift */,
+				1274AAEE270F1AB8001BE63A /* DataStorageService.swift */,
+				1274AAF9270F8BCD001BE63A /* ImageAPIService.swift */,
+				1274AAFB270F8BEA001BE63A /* ImageService.swift */,
+				1274AAF7270F8BA3001BE63A /* CacheImageService.swift */,
+				1274AAF3270F5E20001BE63A /* Repository.swift */,
 				12627A71270DD2B400F39A6D /* Router */,
 				12289A4D270C85BF0024989F /* MoovieApiService.swift */,
 				12289A4B270C74D30024989F /* AssemblyProtocol.swift */,
@@ -206,6 +228,7 @@
 				12E2F75326CC3C1C004E5367 /* Assets.xcassets */,
 				12E2F75526CC3C1C004E5367 /* LaunchScreen.storyboard */,
 				12E2F75826CC3C1C004E5367 /* Info.plist */,
+				1274AAF0270F1D5C001BE63A /* DataStorage.xcdatamodeld */,
 			);
 			path = Moovies;
 			sourceTree = "<group>";
@@ -248,6 +271,7 @@
 			name = Moovies;
 			packageProductDependencies = (
 				12289A44270C5E0C0024989F /* Alamofire */,
+				1274AB00270F8C98001BE63A /* AlamofireImage */,
 			);
 			productName = Moovies;
 			productReference = 12E2F74726CC3C12004E5367 /* Moovies.app */;
@@ -282,6 +306,7 @@
 			mainGroup = 12E2F73E26CC3C11004E5367;
 			packageReferences = (
 				12289A43270C5E0B0024989F /* XCRemoteSwiftPackageReference "Alamofire" */,
+				1274AAFF270F8C98001BE63A /* XCRemoteSwiftPackageReference "AlamofireImage" */,
 			);
 			productRefGroup = 12E2F74826CC3C12004E5367 /* Products */;
 			projectDirPath = "";
@@ -369,9 +394,14 @@
 				12E2F76926CC3DE1004E5367 /* Moovie.swift in Sources */,
 				12289A4A270C6F490024989F /* DescriptionPresenter.swift in Sources */,
 				12E2F76326CC3D4A004E5367 /* PosterTableViewCell.swift in Sources */,
+				1274AAEF270F1AB8001BE63A /* DataStorageService.swift in Sources */,
 				12E2F76D26CC3E47004E5367 /* MooviesViewController.swift in Sources */,
 				129E1C92270B103800BA7BCF /* MainPresentor.swift in Sources */,
+				1274AAF4270F5E20001BE63A /* Repository.swift in Sources */,
+				1274AAF2270F1D5C001BE63A /* DataStorage.xcdatamodeld in Sources */,
 				12E2F74B26CC3C12004E5367 /* AppDelegate.swift in Sources */,
+				1274AAF8270F8BA3001BE63A /* CacheImageService.swift in Sources */,
+				1274AAFA270F8BCD001BE63A /* ImageAPIService.swift in Sources */,
 				12E2F75F26CC3CF5004E5367 /* MooviesTableViewCell.swift in Sources */,
 				12289A4C270C74D30024989F /* AssemblyProtocol.swift in Sources */,
 				12E2F76726CC3DC7004E5367 /* MoovieDescription.swift in Sources */,
@@ -379,8 +409,10 @@
 				12E2F76126CC3D32004E5367 /* OverviewTableViewCell.swift in Sources */,
 				12E2F76B26CC3E10004E5367 /* MoovieDescriptionTableViewController.swift in Sources */,
 				12627A73270DD2CB00F39A6D /* Router.swift in Sources */,
+				1274AAFE270F8C0E001BE63A /* Proxy.swift in Sources */,
 				12896AC626CCF56000622B65 /* Results.swift in Sources */,
 				12289A4E270C85BF0024989F /* MoovieApiService.swift in Sources */,
+				1274AAFC270F8BEA001BE63A /* ImageService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -659,6 +691,14 @@
 				version = 5.4.4;
 			};
 		};
+		1274AAFF270F8C98001BE63A /* XCRemoteSwiftPackageReference "AlamofireImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/AlamofireImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -667,7 +707,25 @@
 			package = 12289A43270C5E0B0024989F /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
 		};
+		1274AB00270F8C98001BE63A /* AlamofireImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1274AAFF270F8C98001BE63A /* XCRemoteSwiftPackageReference "AlamofireImage" */;
+			productName = AlamofireImage;
+		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		1274AAF0270F1D5C001BE63A /* DataStorage.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1274AAF1270F1D5C001BE63A /* DataStorage.xcdatamodel */,
+			);
+			currentVersion = 1274AAF1270F1D5C001BE63A /* DataStorage.xcdatamodel */;
+			path = DataStorage.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 12E2F73F26CC3C11004E5367 /* Project object */;
 }

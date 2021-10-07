@@ -17,7 +17,7 @@ final class MockNavigationControllet: UINavigationController {
 final class RouterTest: XCTestCase {
     var router: RouterProtocol!
     var navigationController = MockNavigationControllet()
-    let assemblerBuilder = ModulesBuilder()
+    let assemblerBuilder = MoviewModules()
 
     override func setUpWithError() throws {
         router = Router(navigationController: navigationController, assemblyBuilder: assemblerBuilder)

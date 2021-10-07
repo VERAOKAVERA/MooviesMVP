@@ -30,7 +30,6 @@ enum MoviesType {
 // MARK: - MainViewPresentorProtocol
 
 protocol MainViewPresentorProtocol: AnyObject {
-    init(view: MainViewProtocol, model: Film, service: MovieAPIServiceProtocol, router: RouterProtocol)
     var films: Film { get }
     func getMoviesOfType(_ type: MoviesType)
     func openMoovieDescription(film: Results)
@@ -46,13 +45,13 @@ class MainPresentor: MainViewPresentorProtocol {
 
     // MARK: - Private Properties
 
-    private var movieAPIservice: MovieAPIServiceProtocol
+    private var movieAPIService: MovieAPIServiceProtocol
     private weak var view: MainViewProtocol?
 
-    required init(view: MainViewProtocol, model: Film, service: MovieAPIServiceProtocol, router: RouterProtocol) {
+    init(view: MainViewProtocol, model: Film, service: MovieAPIServiceProtocol, router: RouterProtocol) {
         self.view = view
         films = model
-        movieAPIservice = service
+        movieAPIService = service
         self.router = router
     }
 
@@ -61,7 +60,7 @@ class MainPresentor: MainViewPresentorProtocol {
     func getMoviesOfType(_ type: MoviesType) {
         films = Film(results: [], totalResults: 0, totalPages: 0, page: 0)
         view?.reloadTable()
-        movieAPIservice.getMoviesOfTypeService(type.urlPath) { [weak self] result in
+        movieAPIService.getMoviesOfTypeService(type.urlPath) { [weak self] result in
             switch result {
             case let .failure(error):
                 print("APIService error! \(error)")

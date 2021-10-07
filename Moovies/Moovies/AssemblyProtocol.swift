@@ -1,29 +1,35 @@
-// AssemblyBuilderProtocol.swift
+// AssemblyProtocol.swift
 // Copyright © RoadMap. All rights reserved.
 
 import Foundation
 import UIKit
 
-protocol AssemblyBuilderProtocol: AnyObject {
+protocol AssemblyProtocol: AnyObject {
     func buildMain(router: RouterProtocol) -> UIViewController
     func buildDetail(film: Results?, id: Int, router: RouterProtocol) -> UIViewController
 }
 
-final class ModulesBuilder: AssemblyBuilderProtocol {
+final class MoviewModules: AssemblyProtocol {
     func buildMain(router: RouterProtocol) -> UIViewController {
-        let service = MovieAPIService()
+        let movieAPIService = MovieAPIService()
         let view = MooviesViewController()
         let films = Film(results: [], totalResults: 0, totalPages: 0, page: 0)
-        let presenter = MainPresentor(view: view, model: films, service: service, router: router)
+        let presenter = MainPresentor(view: view, model: films, service: movieAPIService, router: router)
         view.presentor = presenter
         return view
     }
 
     func buildDetail(film: Results?, id: Int, router: RouterProtocol) -> UIViewController {
-        let service = MovieAPIService()
+        let movieAPIService = MovieAPIService()
         let view = MoovieDescriptionTableViewController()
         let description = Description(posterPath: "", title: "", overview: "")
-        let presenter = DescriptionPresentor(view: view, model: description, id: id, service: service, router: router)
+        let presenter = DescriptionPresentor(
+            view: view,
+            model: description,
+            id: id,
+            service: movieAPIService,
+            router: router
+        )
         view.presentor = presenter
         return view
     }

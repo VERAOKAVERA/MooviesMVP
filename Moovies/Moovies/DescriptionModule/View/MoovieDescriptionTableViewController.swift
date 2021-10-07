@@ -13,7 +13,7 @@ final class MoovieDescriptionTableViewController: UITableViewController {
 
     // MARK: - Internal Properties
 
-    var presentor: DescriptionViewPresentorProtocol!
+    var presentor: DescriptionViewPresentorProtocol?
 
     // MARK: - Private Properties
 
@@ -25,7 +25,7 @@ final class MoovieDescriptionTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
-        presentor.getMoovieDescription()
+        presentor?.getMoovieDescription()
     }
 
     // MARK: - Override Methods

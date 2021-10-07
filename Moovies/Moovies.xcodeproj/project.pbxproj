@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		12289A45270C5E0C0024989F /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 12289A44270C5E0C0024989F /* Alamofire */; };
 		12289A4A270C6F490024989F /* DescriptionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12289A49270C6F490024989F /* DescriptionPresenter.swift */; };
-		12289A4C270C74D30024989F /* AssemblyBuilderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12289A4B270C74D30024989F /* AssemblyBuilderProtocol.swift */; };
+		12289A4C270C74D30024989F /* AssemblyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12289A4B270C74D30024989F /* AssemblyProtocol.swift */; };
 		12289A4E270C85BF0024989F /* MoovieApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12289A4D270C85BF0024989F /* MoovieApiService.swift */; };
 		12627A73270DD2CB00F39A6D /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12627A72270DD2CB00F39A6D /* Router.swift */; };
 		12627A7B270DE88E00F39A6D /* MooviesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12627A7A270DE88E00F39A6D /* MooviesTests.swift */; };
@@ -42,7 +42,7 @@
 
 /* Begin PBXFileReference section */
 		12289A49270C6F490024989F /* DescriptionPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionPresenter.swift; sourceTree = "<group>"; };
-		12289A4B270C74D30024989F /* AssemblyBuilderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssemblyBuilderProtocol.swift; sourceTree = "<group>"; };
+		12289A4B270C74D30024989F /* AssemblyProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssemblyProtocol.swift; sourceTree = "<group>"; };
 		12289A4D270C85BF0024989F /* MoovieApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoovieApiService.swift; sourceTree = "<group>"; };
 		12627A72270DD2CB00F39A6D /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		12627A78270DE88E00F39A6D /* MooviesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MooviesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -197,7 +197,7 @@
 			children = (
 				12627A71270DD2B400F39A6D /* Router */,
 				12289A4D270C85BF0024989F /* MoovieApiService.swift */,
-				12289A4B270C74D30024989F /* AssemblyBuilderProtocol.swift */,
+				12289A4B270C74D30024989F /* AssemblyProtocol.swift */,
 				129E1C96270B144400BA7BCF /* DescriptionModule */,
 				129E1C93270B13E000BA7BCF /* MainModule */,
 				12E2F74A26CC3C12004E5367 /* AppDelegate.swift */,
@@ -373,7 +373,7 @@
 				129E1C92270B103800BA7BCF /* MainPresentor.swift in Sources */,
 				12E2F74B26CC3C12004E5367 /* AppDelegate.swift in Sources */,
 				12E2F75F26CC3CF5004E5367 /* MooviesTableViewCell.swift in Sources */,
-				12289A4C270C74D30024989F /* AssemblyBuilderProtocol.swift in Sources */,
+				12289A4C270C74D30024989F /* AssemblyProtocol.swift in Sources */,
 				12E2F76726CC3DC7004E5367 /* MoovieDescription.swift in Sources */,
 				12E2F74D26CC3C12004E5367 /* SceneDelegate.swift in Sources */,
 				12E2F76126CC3D32004E5367 /* OverviewTableViewCell.swift in Sources */,

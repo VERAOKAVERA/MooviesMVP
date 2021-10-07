@@ -9,6 +9,7 @@ protocol MainViewProtocol: AnyObject {
 }
 
 // MARK: - Enum MoviesType
+
 enum MoviesType {
     case topRated
     case popular
@@ -26,32 +27,40 @@ enum MoviesType {
     }
 }
 
-    // MARK: - MainViewPresentorProtocol
+// MARK: - MainViewPresentorProtocol
+
 protocol MainViewPresentorProtocol: AnyObject {
     var films: Film { get }
     func getMoviesOfType(_ type: MoviesType)
+    func openMoovieDescription(film: Results)
 }
 
-    // MARK: - MainPresentor
-class MainPresentor: MainViewPresentorProtocol {
+// MARK: - MainPresentor
 
+class MainPresentor: MainViewPresentorProtocol {
     // MARK: - Internal Properties
+
     var films: Film
+    var router: RouterProtocol
+
     // MARK: - Private Properties
-    private var movieAPIservice: MovieAPIServiceProtocol
+
+    private var movieAPIService: MovieAPIServiceProtocol
     private weak var view: MainViewProtocol?
 
-    init(view: MainViewProtocol, model: Film, service: MovieAPIServiceProtocol) {
+    init(view: MainViewProtocol, model: Film, service: MovieAPIServiceProtocol, router: RouterProtocol) {
         self.view = view
         films = model
-        movieAPIservice = service
+        movieAPIService = service
+        self.router = router
     }
 
-    // MARK: - Public func 
+    // MARK: - Public func
+
     func getMoviesOfType(_ type: MoviesType) {
         films = Film(results: [], totalResults: 0, totalPages: 0, page: 0)
         view?.reloadTable()
-        movieAPIservice.getMoviesOfTypeService(type.urlPath) { [weak self] result in
+        movieAPIService.getMoviesOfTypeService(type.urlPath) { [weak self] result in
             switch result {
             case let .failure(error):
                 print("APIService error! \(error)")
@@ -62,5 +71,9 @@ class MainPresentor: MainViewPresentorProtocol {
                 }
             }
         }
+    }
+
+    func openMoovieDescription(film: Results) {
+        router.showDetails(films: film, id: film.id)
     }
 }

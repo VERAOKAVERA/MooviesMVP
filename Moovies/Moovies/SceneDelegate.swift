@@ -12,11 +12,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         options connectionOptions: UIScene.ConnectionOptions
     ) {
         guard let _ = (scene as? UIWindowScene) else { return }
-
-        let mainVC = ModulesBuilder.buildMain()
-        window?.rootViewController = mainVC
+        let navigationVC = UINavigationController()
+        let assemblyBuilder = MoviewModules()
+        let router = Router(navigationController: navigationVC, assemblyBuilder: assemblyBuilder)
+        router.initialViewController()
+        window?.rootViewController = navigationVC
         window?.makeKeyAndVisible()
-
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {}

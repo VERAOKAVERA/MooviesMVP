@@ -5,15 +5,18 @@ import UIKit
 
 final class MoovieDescriptionTableViewController: UITableViewController {
     // MARK: - Enum
+
     enum CellsType {
         case poster
         case overview
     }
 
     // MARK: - Internal Properties
-    var presentor: DescriptionViewPresentorProtocol!
+
+    var presentor: DescriptionViewPresentorProtocol?
 
     // MARK: - Private Properties
+
     private let cells: [CellsType] = [.poster, .overview]
     private let identifires = [PosterTableViewCell.identifier, OverviewTableViewCell.identifier]
 
@@ -22,7 +25,7 @@ final class MoovieDescriptionTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
-        presentor.getMoovieDescription()
+        presentor?.getMoovieDescription()
     }
 
     // MARK: - Override Methods

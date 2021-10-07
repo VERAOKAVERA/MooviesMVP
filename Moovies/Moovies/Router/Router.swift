@@ -12,10 +12,10 @@ protocol RouterMain {
 protocol RouterProtocol: RouterMain {
     func initialViewController()
     func showDetails(films: Results?, id: Int)
-    // func popToRoot()
 }
 
 class Router: RouterProtocol {
+    // MARK: - Internal Properties
     var navigationController: UINavigationController?
     var assemblyBuilder: AssemblyBuilderProtocol?
 
@@ -35,8 +35,4 @@ class Router: RouterProtocol {
         guard let detailVC = assemblyBuilder?.buildDetail(film: films, id: id, router: self) else { return }
         navigationController.pushViewController(detailVC, animated: true)
     }
-
-//    func popToRoot() {
-//        <#code#>
-//    }
 }

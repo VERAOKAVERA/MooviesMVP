@@ -84,7 +84,15 @@ final class MoviesRealm: DatabaseProtocol {
     func removeAll() {}
 }
 
-final class Repository {
+protocol Repositorable {
+    func getMovie(movieType: MoviesType) -> [Movie]
+    func getMovieDescription(id: Int) -> [Description]
+    func save(obj: [Movie], movieType: MoviesType)
+    func saveDescription(obj: [Description], id: Int)
+    func deleteAll()
+}
+
+final class Repository: Repositorable {
     var dataBase: DatabaseProtocol
     init(dataBase: DatabaseProtocol) {
         self.dataBase = dataBase

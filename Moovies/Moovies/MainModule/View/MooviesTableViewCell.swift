@@ -33,7 +33,9 @@ class MooviesTableViewCell: UITableViewCell {
         guard let usageFilms = films else { return }
         guard let posterPath = usageFilms.results[indexPath.row].posterPath,
               let url = URL(string: "https://image.tmdb.org/t/p/w500\(posterPath)") else { return }
-        ImageService.shared.getImage(url: url) { image in
+//        ImageService.shared.getImage(url: url) { image in
+        let imageService = ImageService()
+        imageService.getImage(url: url) { image in
             self.posterImageView.image = image
         }
         titleLabel.text = usageFilms.results[indexPath.row].title

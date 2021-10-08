@@ -14,7 +14,7 @@ protocol ImageServiceProtocol {
 }
 
 final class ImageService: ImageServiceProtocol {
-    static let shared = ImageService()
+//    static let shared = ImageService()
 
     // MARK: - Public Methods
 

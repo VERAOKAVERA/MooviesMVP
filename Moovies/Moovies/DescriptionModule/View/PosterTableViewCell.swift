@@ -24,7 +24,8 @@ class PosterTableViewCell: UITableViewCell {
     func configureCell(details: Description, indexPath: IndexPath) {
         guard let posterPath = details.posterPath,
               let url = URL(string: "https://image.tmdb.org/t/p/w500\(posterPath)") else { return }
-        ImageService.shared.getImage(url: url) { image in
+        let imageService = ImageService()
+        imageService.getImage(url: url) { image in
             self.posterImageView.image = image
         }
     }

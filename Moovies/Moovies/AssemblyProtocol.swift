@@ -27,7 +27,7 @@ final class MoviewModules: AssemblyProtocol {
     func buildDetail(film: Movie?, id: Int, router: RouterProtocol) -> UIViewController {
         let movieAPIService = MovieAPIService()
         let view = MoovieDescriptionTableViewController()
-        let dataStorageService = DetailsDataStorageService.shared
+        let dataStorageService = DetailsDataStorageService()
         let presenter = DescriptionPresentor(
             view: view,
             id: id,

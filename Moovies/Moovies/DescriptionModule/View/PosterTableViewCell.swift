@@ -22,14 +22,10 @@ class PosterTableViewCell: UITableViewCell {
     // MARK: Internal Methods
 
     func configureCell(details: Description, indexPath: IndexPath) {
-        DispatchQueue.global().async {
-            guard let posterPath = details.posterPath,
-                  let url = URL(string: "https://image.tmdb.org/t/p/w500\(posterPath)"),
-                  let imageData = try? Data(contentsOf: url),
-                  let posterImage = UIImage(data: imageData) else { return }
-            DispatchQueue.main.async {
-                self.posterImageView.image = posterImage
-            }
+        guard let posterPath = details.posterPath,
+              let url = URL(string: "https://image.tmdb.org/t/p/w500\(posterPath)") else { return }
+        ImageService.shared.getImage(url: url) { image in
+            self.posterImageView.image = image
         }
     }
 

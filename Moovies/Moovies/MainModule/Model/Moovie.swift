@@ -3,8 +3,8 @@
 
 import Foundation
 
-struct Film: Decodable {
-    var results: [Results]
+struct MoviesResult: Decodable {
+    var results: [Movie]
     let totalResults: Int
     let totalPages: Int
     let page: Int

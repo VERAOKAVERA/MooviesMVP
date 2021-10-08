@@ -10,7 +10,7 @@ protocol MainViewProtocol: AnyObject {
 
 // MARK: - Enum MoviesType
 
-enum MoviesType {
+enum MoviesType: Int {
     case topRated
     case popular
     case upcoming
@@ -30,9 +30,9 @@ enum MoviesType {
 // MARK: - MainViewPresentorProtocol
 
 protocol MainViewPresentorProtocol: AnyObject {
-    var films: Film { get }
+    var films: MoviesResult { get }
     func getMoviesOfType(_ type: MoviesType)
-    func openMoovieDescription(film: Results)
+    func openMoovieDescription(film: Movie)
 }
 
 // MARK: - MainPresentor
@@ -40,40 +40,55 @@ protocol MainViewPresentorProtocol: AnyObject {
 class MainPresentor: MainViewPresentorProtocol {
     // MARK: - Internal Properties
 
-    var films: Film
+    var films = MoviesResult(results: [], totalResults: 0, totalPages: 0, page: 0)
     var router: RouterProtocol
+    private var dataStorageService: DataStorageService
 
     // MARK: - Private Properties
 
     private var movieAPIService: MovieAPIServiceProtocol
     private weak var view: MainViewProtocol?
 
-    init(view: MainViewProtocol, model: Film, service: MovieAPIServiceProtocol, router: RouterProtocol) {
+    init(
+        view: MainViewProtocol,
+        service: MovieAPIServiceProtocol,
+        router: RouterProtocol,
+        coreDataService: DataStorageService
+    ) {
         self.view = view
-        films = model
         movieAPIService = service
         self.router = router
+        dataStorageService = coreDataService
     }
 
     // MARK: - Public func
 
     func getMoviesOfType(_ type: MoviesType) {
-        films = Film(results: [], totalResults: 0, totalPages: 0, page: 0)
+        let existingMovies = dataStorageService.get(movieType: type)
+
+        if !existingMovies.isEmpty {
+            films.results = existingMovies
+            view?.reloadTable()
+            return
+        }
+        films = MoviesResult(results: [], totalResults: 0, totalPages: 0, page: 0)
         view?.reloadTable()
+
         movieAPIService.getMoviesOfTypeService(type.urlPath) { [weak self] result in
             switch result {
             case let .failure(error):
                 print("APIService error! \(error)")
             case let .success(filmsResults):
-                self?.films.results = filmsResults
                 DispatchQueue.main.async {
+                    self?.films.results = filmsResults
+                    self?.dataStorageService.save(object: filmsResults, movieType: type)
                     self?.view?.reloadTable()
                 }
             }
         }
     }
 
-    func openMoovieDescription(film: Results) {
+    func openMoovieDescription(film: Movie) {
         router.showDetails(films: film, id: film.id)
     }
 }

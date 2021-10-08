@@ -11,7 +11,7 @@ protocol RouterMain {
 
 protocol RouterProtocol: RouterMain {
     func initialViewController()
-    func showDetails(films: Results?, id: Int)
+    func showDetails(films: Movie?, id: Int)
 }
 
 class Router: RouterProtocol {
@@ -31,7 +31,7 @@ class Router: RouterProtocol {
         navigationController.viewControllers = [mainVC]
     }
 
-    func showDetails(films: Results?, id: Int) {
+    func showDetails(films: Movie?, id: Int) {
         guard let navigationController = navigationController else { return }
         guard let detailVC = assemblyBuilder?.buildDetail(film: films, id: id, router: self) else { return }
         navigationController.pushViewController(detailVC, animated: true)

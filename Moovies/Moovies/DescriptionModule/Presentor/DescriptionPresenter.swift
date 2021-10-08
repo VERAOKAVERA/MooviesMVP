@@ -18,16 +18,25 @@ class DescriptionPresentor: DescriptionViewPresentorProtocol {
     var details: Description
     var ide: Int
     var router: RouterProtocol?
+    var coreDataService: DetailsDataStorageService
 
     private var movieAPIservice: MovieAPIServiceProtocol
     private weak var view: DescriptionViewProtocol?
 
-    init(view: DescriptionViewProtocol, model: Description, id: Int, service: MovieAPIService, router: RouterProtocol) {
+    init(
+        view: DescriptionViewProtocol,
+        model: Description,
+        id: Int,
+        service: MovieAPIService,
+        router: RouterProtocol,
+        coreDataService: DetailsDataStorageService
+    ) {
         self.view = view
         details = model
         self.router = router
         ide = id
         movieAPIservice = service
+        self.coreDataService = coreDataService
     }
 
     func getMoovieDescription() {

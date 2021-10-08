@@ -4,12 +4,7 @@
 import CoreData
 import Foundation
 
-// дженерик протокол без ассоциативных типов
-// Паттерн репозиторий позволяет абстрогоритьваться от БД и в дальнейшем ее подменять
-// 1)
 protocol DatabaseProtocol {
-    // 2)создаем ассоциативный тип
-    //    associatedtype Entity
     func get(movieType: MoviesType) -> [Movie]
     func add(object: [Movie], movieType: MoviesType)
     func remove(id: Int)
@@ -18,9 +13,6 @@ protocol DatabaseProtocol {
 
 final class CoreDataMovies: DatabaseProtocol {
     let coreDataService = CoreDataService.shared
-    // В данном случае тип Entity соответствует реализации которую мы выберем ( по типу дженерика )
-    // 4.1)
-    //    typealias Entity = Movies
     func get(movieType: MoviesType) -> [Movie] {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: String(describing: CoreMovie.self))
         fetchRequest.predicate = NSPredicate(format: "movieType = %i", movieType.rawValue)
@@ -64,12 +56,7 @@ final class CoreDataMovies: DatabaseProtocol {
     }
 }
 
-// реализуем класс который рабоатет с CoreData
-// 4)
 final class RealmMovies: DatabaseProtocol {
-    // В данном случае тип Entity соответствует реализации которую мы выберем ( по типу дженерика )
-    // 4.1)
-    typealias Entity = [Movie]
     func get(movieType: MoviesType) -> [Movie] {
         return [Movie](
             repeating: .init(posterPath: "", overview: "", title: "", releaseDate: "", id: 0, voteAverage: 0),
@@ -82,9 +69,6 @@ final class RealmMovies: DatabaseProtocol {
     func removeAll() {}
 }
 
-// Нужно добавить Presenter
-// Мы должны добавить вложенный дженерик\. иначе компилятор будет ругаться
-// 5) и 5.1)
 final class Repository {
     var dataBase: DatabaseProtocol
     init(dataBase: DatabaseProtocol) {
@@ -103,11 +87,3 @@ final class Repository {
         dataBase.removeAll()
     }
 }
-
-// final class Repository {
-//    // 6)
-//    // реализуем сущность презентера и указываем тип CoreData
-//    let presenterCoreData = DataPresenter<CoreDataMovies>(dataBase: CoreDataMovies())
-//    let presenterRealm = DataPresenter<RealmMovies>(dataBase: RealmMovies())
-//    func realmPresentor() {}
-// }

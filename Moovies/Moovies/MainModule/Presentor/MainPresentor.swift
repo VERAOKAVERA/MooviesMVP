@@ -42,24 +42,31 @@ class MainPresentor: MainViewPresentorProtocol {
 
     var films: MoviesResult
     var router: RouterProtocol
+    var coreDataService: DataStorageService
 
     // MARK: - Private Properties
 
     private var movieAPIService: MovieAPIServiceProtocol
     private weak var view: MainViewProtocol?
 
-    init(view: MainViewProtocol, model: MoviesResult, service: MovieAPIServiceProtocol, router: RouterProtocol) {
+    init(
+        view: MainViewProtocol,
+        model: MoviesResult,
+        service: MovieAPIServiceProtocol,
+        router: RouterProtocol,
+        coreDataService: DataStorageService
+    ) {
         self.view = view
         films = model
         movieAPIService = service
         self.router = router
+        self.coreDataService = coreDataService
     }
 
     // MARK: - Public func
 
     func getMoviesOfType(_ type: MoviesType) {
-        let dataStorageService = DataStorageService.shared
-        let existingMovies = dataStorageService.get(movieType: type)
+        let existingMovies = coreDataService.get(movieType: type)
 
         if !existingMovies.isEmpty {
             films.results = existingMovies
@@ -76,7 +83,7 @@ class MainPresentor: MainViewPresentorProtocol {
             case let .success(filmsResults):
                 DispatchQueue.main.async {
                     self?.films.results = filmsResults
-                    dataStorageService.save(object: filmsResults, movieType: type)
+                    self?.coreDataService.save(object: filmsResults, movieType: type)
                     self?.view?.reloadTable()
                 }
             }

@@ -34,3 +34,25 @@ final class DataStorageService: DataStorageServiceProtocol {
 
     private init() {}
 }
+
+final class DetailsDataStorageService: DataStorageServiceProtocol {
+    private let repository = Repository(dataBase: CoreDataMovies())
+
+    func save(object: [Movie], movieType: MoviesType) {
+        repository.save(obj: object, movieType: movieType)
+    }
+
+    func get(movieType: MoviesType) -> [Movie] {
+        return repository.getMovie(movieType: movieType)
+    }
+
+    func removeAll() {
+        repository.deleteAll()
+    }
+
+    // MARK: - Core Data stack
+
+    static let shared = DetailsDataStorageService()
+
+    private init() {}
+}

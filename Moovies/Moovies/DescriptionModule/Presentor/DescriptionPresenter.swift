@@ -40,6 +40,13 @@ class DescriptionPresentor: DescriptionViewPresentorProtocol {
     }
 
     func getMoovieDescription() {
+        let existingMovies = coreDataService.getDescription(id: ide)
+
+        if !existingMovies.isEmpty {
+            details = existingMovies[0]
+            view?.reloadTable()
+            return
+        }
         movieAPIservice.getMovieDescriptionService(id: ide) { [weak self] result in
             switch result {
             case let .failure(error):
@@ -47,6 +54,8 @@ class DescriptionPresentor: DescriptionViewPresentorProtocol {
             case let .success(filmsResults):
                 self?.details = filmsResults
                 DispatchQueue.main.async {
+                    self?.details = filmsResults
+                    self?.coreDataService.saveDescription(object: [filmsResults], id: self?.ide ?? 0)
                     self?.view?.reloadTable()
                 }
             }

@@ -15,4 +15,5 @@ class CoreDescription: NSManagedObject {
     @NSManaged var posterPath: String?
     @NSManaged var title: String
     @NSManaged var overview: String
+    @NSManaged var id: Int
 }

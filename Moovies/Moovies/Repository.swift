@@ -6,12 +6,20 @@ import Foundation
 
 protocol DatabaseProtocol {
     func get(movieType: MoviesType) -> [Movie]
+    func getDescription(id: Int) -> [Description]
     func add(object: [Movie], movieType: MoviesType)
+    func addDescription(object: [Description], id: Int)
     func remove(id: Int)
     func removeAll()
 }
 
 final class CoreDataMovies: DatabaseProtocol {
+    func getDescription(id: Int) -> [Description] {
+        return []
+    }
+
+    func addDescription(object: [Description], id: Int) {}
+
     let coreDataService = CoreDataService.shared
     func get(movieType: MoviesType) -> [Movie] {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: String(describing: CoreMovie.self))
@@ -57,6 +65,12 @@ final class CoreDataMovies: DatabaseProtocol {
 }
 
 final class RealmMovies: DatabaseProtocol {
+    func getDescription(id: Int) -> [Description] {
+        return []
+    }
+
+    func addDescription(object: [Description], id: Int) {}
+
     func get(movieType: MoviesType) -> [Movie] {
         return [Movie](
             repeating: .init(posterPath: "", overview: "", title: "", releaseDate: "", id: 0, voteAverage: 0),
@@ -79,11 +93,58 @@ final class Repository {
         return dataBase.get(movieType: movieType)
     }
 
+    func getMovieDescription(id: Int) -> [Description] {
+        return dataBase.getDescription(id: id)
+    }
+
     func save(obj: [Movie], movieType: MoviesType) {
         dataBase.add(object: obj, movieType: movieType)
     }
 
+    func saveDescription(obj: [Description], id: Int) {
+        dataBase.addDescription(object: obj, id: id)
+    }
+
     func deleteAll() {
         dataBase.removeAll()
+    }
+}
+
+final class CoreDataMoviesDetails: DatabaseProtocol {
+    func get(movieType: MoviesType) -> [Movie] {
+        return []
+    }
+
+    let coreDataService = CoreDataService.shared
+    func getDescription(id: Int) -> [Description] {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: String(describing: CoreDescription.self))
+        fetchRequest.predicate = NSPredicate(format: "movieType = %i", id)
+        guard let result = try? coreDataService.context.fetch(fetchRequest) as? [CoreDescription] else { return [] }
+
+        let movies = result.map {
+            Description(posterPath: $0.posterPath, title: $0.title, overview: $0.overview)
+        }
+        return movies
+    }
+
+    func addDescription(object: [Description], id: Int) {
+        for movie in object {
+            let movieModel = CoreDescription(context: coreDataService.context)
+            movieModel.title = movie.title
+            movieModel.posterPath = movie.posterPath
+            movieModel.overview = movie.overview
+        }
+        coreDataService.saveContext()
+    }
+
+    func add(object: [Movie], movieType: MoviesType) {}
+
+    func remove(id: Int) {}
+
+    func removeAll() {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: String(describing: CoreMovie.self))
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        _ = try? coreDataService.context.execute(deleteRequest)
+        coreDataService.saveContext()
     }
 }

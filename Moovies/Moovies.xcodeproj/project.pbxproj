@@ -25,6 +25,9 @@
 		1274AB03270FABEB001BE63A /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1274AB02270FABEB001BE63A /* CoreDataService.swift */; };
 		12896AC626CCF56000622B65 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12896AC526CCF56000622B65 /* Movie.swift */; };
 		129E1C92270B103800BA7BCF /* MainPresentor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129E1C91270B103800BA7BCF /* MainPresentor.swift */; };
+		129F08FF27108FED003AEBAF /* MainPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129F08FE27108FED003AEBAF /* MainPresenterTests.swift */; };
+		129F09022710993F003AEBAF /* MainScreenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129F09012710993F003AEBAF /* MainScreenTests.swift */; };
+		129F090427109D79003AEBAF /* DescriptionScreenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129F090327109D79003AEBAF /* DescriptionScreenTests.swift */; };
 		12E2F74B26CC3C12004E5367 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E2F74A26CC3C12004E5367 /* AppDelegate.swift */; };
 		12E2F74D26CC3C12004E5367 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E2F74C26CC3C12004E5367 /* SceneDelegate.swift */; };
 		12E2F75226CC3C12004E5367 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12E2F75026CC3C12004E5367 /* Main.storyboard */; };
@@ -41,6 +44,13 @@
 
 /* Begin PBXContainerItemProxy section */
 		12627A7C270DE88E00F39A6D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 12E2F73F26CC3C11004E5367 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 12E2F74626CC3C12004E5367;
+			remoteInfo = Moovies;
+		};
+		129F08F927106CE9003AEBAF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 12E2F73F26CC3C11004E5367 /* Project object */;
 			proxyType = 1;
@@ -67,6 +77,11 @@
 		1274AB02270FABEB001BE63A /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
 		12896AC526CCF56000622B65 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		129E1C91270B103800BA7BCF /* MainPresentor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresentor.swift; sourceTree = "<group>"; };
+		129F08F327106CE9003AEBAF /* MooviesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MooviesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		129F08F727106CE9003AEBAF /* MooviesUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MooviesUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		129F08FE27108FED003AEBAF /* MainPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenterTests.swift; sourceTree = "<group>"; };
+		129F09012710993F003AEBAF /* MainScreenTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenTests.swift; sourceTree = "<group>"; };
+		129F090327109D79003AEBAF /* DescriptionScreenTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionScreenTests.swift; sourceTree = "<group>"; };
 		12E2F74726CC3C12004E5367 /* Moovies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moovies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		12E2F74A26CC3C12004E5367 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.simpleColoring; };
 		12E2F74C26CC3C12004E5367 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -85,6 +100,13 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		12627A75270DE88E00F39A6D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		129F08F027106CE9003AEBAF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -143,6 +165,7 @@
 			children = (
 				12627A7A270DE88E00F39A6D /* MooviesTests.swift */,
 				12627A81270DEB7000F39A6D /* UnitTestRouter.swift */,
+				129F08FE27108FED003AEBAF /* MainPresenterTests.swift */,
 			);
 			path = MooviesTests;
 			sourceTree = "<group>";
@@ -192,11 +215,22 @@
 			path = DescriptionModule;
 			sourceTree = "<group>";
 		};
+		129F08F427106CE9003AEBAF /* MooviesUITests */ = {
+			isa = PBXGroup;
+			children = (
+				129F09012710993F003AEBAF /* MainScreenTests.swift */,
+				129F08F727106CE9003AEBAF /* MooviesUITestsLaunchTests.swift */,
+				129F090327109D79003AEBAF /* DescriptionScreenTests.swift */,
+			);
+			path = MooviesUITests;
+			sourceTree = "<group>";
+		};
 		12E2F73E26CC3C11004E5367 = {
 			isa = PBXGroup;
 			children = (
 				12E2F74926CC3C12004E5367 /* Moovies */,
 				12627A79270DE88E00F39A6D /* MooviesTests */,
+				129F08F427106CE9003AEBAF /* MooviesUITests */,
 				12E2F74826CC3C12004E5367 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -206,6 +240,7 @@
 			children = (
 				12E2F74726CC3C12004E5367 /* Moovies.app */,
 				12627A78270DE88E00F39A6D /* MooviesTests.xctest */,
+				129F08F327106CE9003AEBAF /* MooviesUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -257,6 +292,24 @@
 			productReference = 12627A78270DE88E00F39A6D /* MooviesTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		129F08F227106CE9003AEBAF /* MooviesUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 129F08FD27106CE9003AEBAF /* Build configuration list for PBXNativeTarget "MooviesUITests" */;
+			buildPhases = (
+				129F08EF27106CE9003AEBAF /* Sources */,
+				129F08F027106CE9003AEBAF /* Frameworks */,
+				129F08F127106CE9003AEBAF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				129F08FA27106CE9003AEBAF /* PBXTargetDependency */,
+			);
+			name = MooviesUITests;
+			productName = MooviesUITests;
+			productReference = 129F08F327106CE9003AEBAF /* MooviesUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		12E2F74626CC3C12004E5367 /* Moovies */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 12E2F75B26CC3C1C004E5367 /* Build configuration list for PBXNativeTarget "Moovies" */;
@@ -293,6 +346,10 @@
 						CreatedOnToolsVersion = 13.0;
 						TestTargetID = 12E2F74626CC3C12004E5367;
 					};
+					129F08F227106CE9003AEBAF = {
+						CreatedOnToolsVersion = 13.0;
+						TestTargetID = 12E2F74626CC3C12004E5367;
+					};
 					12E2F74626CC3C12004E5367 = {
 						CreatedOnToolsVersion = 12.5.1;
 					};
@@ -317,12 +374,20 @@
 			targets = (
 				12E2F74626CC3C12004E5367 /* Moovies */,
 				12627A77270DE88E00F39A6D /* MooviesTests */,
+				129F08F227106CE9003AEBAF /* MooviesUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		12627A76270DE88E00F39A6D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		129F08F127106CE9003AEBAF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -385,8 +450,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				129F08FF27108FED003AEBAF /* MainPresenterTests.swift in Sources */,
 				12627A82270DEB7000F39A6D /* UnitTestRouter.swift in Sources */,
 				12627A7B270DE88E00F39A6D /* MooviesTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		129F08EF27106CE9003AEBAF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				129F09022710993F003AEBAF /* MainScreenTests.swift in Sources */,
+				129F090427109D79003AEBAF /* DescriptionScreenTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -427,6 +502,11 @@
 			isa = PBXTargetDependency;
 			target = 12E2F74626CC3C12004E5367 /* Moovies */;
 			targetProxy = 12627A7C270DE88E00F39A6D /* PBXContainerItemProxy */;
+		};
+		129F08FA27106CE9003AEBAF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 12E2F74626CC3C12004E5367 /* Moovies */;
+			targetProxy = 129F08F927106CE9003AEBAF /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -497,6 +577,54 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Moovies.app/Moovies";
+			};
+			name = Release;
+		};
+		129F08FB27106CE9003AEBAF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 36XB4RCQS2;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Vera-Zaitseva.MooviesUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Moovies;
+			};
+			name = Debug;
+		};
+		129F08FC27106CE9003AEBAF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 36XB4RCQS2;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Vera-Zaitseva.MooviesUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Moovies;
 			};
 			name = Release;
 		};
@@ -662,6 +790,15 @@
 			buildConfigurations = (
 				12627A7F270DE88E00F39A6D /* Debug */,
 				12627A80270DE88E00F39A6D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		129F08FD27106CE9003AEBAF /* Build configuration list for PBXNativeTarget "MooviesUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				129F08FB27106CE9003AEBAF /* Debug */,
+				129F08FC27106CE9003AEBAF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

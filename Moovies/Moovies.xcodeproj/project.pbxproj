@@ -28,6 +28,7 @@
 		129F08FF27108FED003AEBAF /* MainPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129F08FE27108FED003AEBAF /* MainPresenterTests.swift */; };
 		129F09022710993F003AEBAF /* MainScreenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129F09012710993F003AEBAF /* MainScreenTests.swift */; };
 		129F090427109D79003AEBAF /* DescriptionScreenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129F090327109D79003AEBAF /* DescriptionScreenTests.swift */; };
+		129F09062710A193003AEBAF /* ImageServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129F09052710A193003AEBAF /* ImageServiceTest.swift */; };
 		12E2F74B26CC3C12004E5367 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E2F74A26CC3C12004E5367 /* AppDelegate.swift */; };
 		12E2F74D26CC3C12004E5367 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E2F74C26CC3C12004E5367 /* SceneDelegate.swift */; };
 		12E2F75226CC3C12004E5367 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12E2F75026CC3C12004E5367 /* Main.storyboard */; };
@@ -78,10 +79,10 @@
 		12896AC526CCF56000622B65 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		129E1C91270B103800BA7BCF /* MainPresentor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresentor.swift; sourceTree = "<group>"; };
 		129F08F327106CE9003AEBAF /* MooviesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MooviesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		129F08F727106CE9003AEBAF /* MooviesUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MooviesUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		129F08FE27108FED003AEBAF /* MainPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenterTests.swift; sourceTree = "<group>"; };
 		129F09012710993F003AEBAF /* MainScreenTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenTests.swift; sourceTree = "<group>"; };
 		129F090327109D79003AEBAF /* DescriptionScreenTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionScreenTests.swift; sourceTree = "<group>"; };
+		129F09052710A193003AEBAF /* ImageServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageServiceTest.swift; sourceTree = "<group>"; };
 		12E2F74726CC3C12004E5367 /* Moovies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moovies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		12E2F74A26CC3C12004E5367 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.simpleColoring; };
 		12E2F74C26CC3C12004E5367 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -166,6 +167,7 @@
 				12627A7A270DE88E00F39A6D /* MooviesTests.swift */,
 				12627A81270DEB7000F39A6D /* UnitTestRouter.swift */,
 				129F08FE27108FED003AEBAF /* MainPresenterTests.swift */,
+				129F09052710A193003AEBAF /* ImageServiceTest.swift */,
 			);
 			path = MooviesTests;
 			sourceTree = "<group>";
@@ -219,7 +221,6 @@
 			isa = PBXGroup;
 			children = (
 				129F09012710993F003AEBAF /* MainScreenTests.swift */,
-				129F08F727106CE9003AEBAF /* MooviesUITestsLaunchTests.swift */,
 				129F090327109D79003AEBAF /* DescriptionScreenTests.swift */,
 			);
 			path = MooviesUITests;
@@ -451,6 +452,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				129F08FF27108FED003AEBAF /* MainPresenterTests.swift in Sources */,
+				129F09062710A193003AEBAF /* ImageServiceTest.swift in Sources */,
 				12627A82270DEB7000F39A6D /* UnitTestRouter.swift in Sources */,
 				12627A7B270DE88E00F39A6D /* MooviesTests.swift in Sources */,
 			);

@@ -22,6 +22,7 @@ class MainScreenTests: XCTestCase {
 
     func testSegmentControl() throws {
         let app = XCUIApplication()
+
         app.segmentedControls.buttons["Популярные"].tap()
         app.segmentedControls.buttons["Топ-100"].tap()
         app.segmentedControls.buttons["Скоро"].tap()

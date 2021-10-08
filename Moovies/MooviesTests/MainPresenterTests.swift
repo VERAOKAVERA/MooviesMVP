@@ -14,10 +14,7 @@ import XCTest
 final class MainMockView: MainViewProtocol {
     func reloadTable() {}
     var films = MoviesResult(results: [], totalResults: 0, totalPages: 0, page: 0)
-    func getMoviesOfType(_ type: MoviesType) {
-        films.results
-    }
-
+    func getMoviesOfType(_ type: MoviesType) {}
     func openMoovieDescription(film: Movie) {}
     func success() {}
     func failure(error: Error) {}
@@ -89,29 +86,4 @@ final class MainPresenterTest: XCTestCase {
 
         XCTAssertNotNil(catchFilm)
     }
-
-//    func testGetFailureFilm() {
-//        film = Movie(posterPath: "", overview: "", title: "", releaseDate: "", id: 1, voteAverage: 1)
-//        view = MainMockView()
-//        networkService = MainMockNetworkService()
-//        presenter = MainPresentor(
-//            view: view,
-//            service: networkService,
-//            router: router,
-//            coreDataService: DataStorageService()
-//        )
-//
-//        var catchError: Error?
-//
-//        networkService.getMoviesOfTypeService("top_rated") { result in
-//            switch result {
-//            case .success:
-//                break
-//            case let .failure(error):
-//                print(error.localizedDescription)
-//            }
-//        }
-//
-//        XCTAssertNotNil(catchError)
-//    }
 }

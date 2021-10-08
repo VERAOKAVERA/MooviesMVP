@@ -1,11 +1,11 @@
-// Results.swift
+// Movie.swift
 // Copyright © RoadMap. All rights reserved.
 
 import CoreData
 import Foundation
 
 struct PageDataMovie {
-    var movies: [Film]
+    var movies: [MoviesResult]
 }
 
 extension PageDataMovie: Decodable {
@@ -15,7 +15,7 @@ extension PageDataMovie: Decodable {
 
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: MovieCodingKeys.self)
-        movies = try container.decode([Film].self, forKey: .movies)
+        movies = try container.decode([MoviesResult].self, forKey: .movies)
     }
 }
 
@@ -27,11 +27,22 @@ extension CodingUserInfoKey {
     static let managedObjectContext = CodingUserInfoKey(rawValue: "managedObjectContext")
 }
 
-struct Results: Decodable {
+struct Movie: Decodable {
     var posterPath: String?
     let overview: String
     let title: String
     let releaseDate: String
     let id: Int
     let voteAverage: Float
+}
+
+@objc(CoreMovie)
+class CoreMovie: NSManagedObject {
+    @NSManaged var posterPath: String?
+    @NSManaged var overview: String
+    @NSManaged var title: String
+    @NSManaged var releaseDate: String
+    @NSManaged var id: Int
+    @NSManaged var movieType: Int
+    @NSManaged var voteAverage: Float
 }

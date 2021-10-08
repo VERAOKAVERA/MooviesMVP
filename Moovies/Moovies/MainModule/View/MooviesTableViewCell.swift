@@ -29,17 +29,21 @@ class MooviesTableViewCell: UITableViewCell {
         setupAverage()
     }
 
-    func configureCell(films: Film?, indexPath: IndexPath) {
+    func configureCell(films: MoviesResult?, indexPath: IndexPath) {
         guard let usageFilms = films else { return }
-        DispatchQueue.global().async {
-            guard let posterPath = usageFilms.results[indexPath.row].posterPath,
-                  let url = URL(string: "https://image.tmdb.org/t/p/w500\(posterPath)"),
-                  let imageData = try? Data(contentsOf: url),
-                  let posterImage = UIImage(data: imageData) else { return }
-            DispatchQueue.main.async {
-                self.posterImageView.image = posterImage
-            }
+        guard let posterPath = usageFilms.results[indexPath.row].posterPath,
+              let url = URL(string: "https://image.tmdb.org/t/p/w500\(posterPath)") else { return }
+        ImageService.shared.getImage(url: url) { image in
+            self.posterImageView.image = image
         }
+//
+//            guard let posterPath = usageFilms.results[indexPath.row].posterPath,
+//                  let url = URL(string: "https://image.tmdb.org/t/p/w500\(posterPath)"),
+//                  let imageData = try? Data(contentsOf: url),
+//                  let posterImage = UIImage(data: imageData) else { return }
+//            DispatchQueue.main.async {
+//                self.posterImageView.image = posterImage
+//            }
         titleLabel.text = usageFilms.results[indexPath.row].title
         overviewLabel.text = usageFilms.results[indexPath.row].overview
         releaseDatelabel.text = convertDateFormat(inputDate: usageFilms.results[indexPath.row].releaseDate)

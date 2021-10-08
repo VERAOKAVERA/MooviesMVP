@@ -22,7 +22,8 @@
 		1274AAFC270F8BEA001BE63A /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1274AAFB270F8BEA001BE63A /* ImageService.swift */; };
 		1274AAFE270F8C0E001BE63A /* Proxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1274AAFD270F8C0E001BE63A /* Proxy.swift */; };
 		1274AB01270F8C98001BE63A /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = 1274AB00270F8C98001BE63A /* AlamofireImage */; };
-		12896AC626CCF56000622B65 /* Results.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12896AC526CCF56000622B65 /* Results.swift */; };
+		1274AB03270FABEB001BE63A /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1274AB02270FABEB001BE63A /* CoreDataService.swift */; };
+		12896AC626CCF56000622B65 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12896AC526CCF56000622B65 /* Movie.swift */; };
 		129E1C92270B103800BA7BCF /* MainPresentor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129E1C91270B103800BA7BCF /* MainPresentor.swift */; };
 		12E2F74B26CC3C12004E5367 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E2F74A26CC3C12004E5367 /* AppDelegate.swift */; };
 		12E2F74D26CC3C12004E5367 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E2F74C26CC3C12004E5367 /* SceneDelegate.swift */; };
@@ -63,7 +64,8 @@
 		1274AAF9270F8BCD001BE63A /* ImageAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAPIService.swift; sourceTree = "<group>"; };
 		1274AAFB270F8BEA001BE63A /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
 		1274AAFD270F8C0E001BE63A /* Proxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Proxy.swift; sourceTree = "<group>"; };
-		12896AC526CCF56000622B65 /* Results.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Results.swift; sourceTree = "<group>"; };
+		1274AB02270FABEB001BE63A /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
+		12896AC526CCF56000622B65 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		129E1C91270B103800BA7BCF /* MainPresentor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresentor.swift; sourceTree = "<group>"; };
 		12E2F74726CC3C12004E5367 /* Moovies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moovies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		12E2F74A26CC3C12004E5367 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.simpleColoring; };
@@ -115,7 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				12E2F76626CC3DC7004E5367 /* MoovieDescription.swift */,
-				12896AC526CCF56000622B65 /* Results.swift */,
+				12896AC526CCF56000622B65 /* Movie.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -216,6 +218,7 @@
 				1274AAF9270F8BCD001BE63A /* ImageAPIService.swift */,
 				1274AAFB270F8BEA001BE63A /* ImageService.swift */,
 				1274AAF7270F8BA3001BE63A /* CacheImageService.swift */,
+				1274AB02270FABEB001BE63A /* CoreDataService.swift */,
 				1274AAF3270F5E20001BE63A /* Repository.swift */,
 				12627A71270DD2B400F39A6D /* Router */,
 				12289A4D270C85BF0024989F /* MoovieApiService.swift */,
@@ -410,8 +413,9 @@
 				12E2F76B26CC3E10004E5367 /* MoovieDescriptionTableViewController.swift in Sources */,
 				12627A73270DD2CB00F39A6D /* Router.swift in Sources */,
 				1274AAFE270F8C0E001BE63A /* Proxy.swift in Sources */,
-				12896AC626CCF56000622B65 /* Results.swift in Sources */,
+				12896AC626CCF56000622B65 /* Movie.swift in Sources */,
 				12289A4E270C85BF0024989F /* MoovieApiService.swift in Sources */,
+				1274AB03270FABEB001BE63A /* CoreDataService.swift in Sources */,
 				1274AAFC270F8BEA001BE63A /* ImageService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

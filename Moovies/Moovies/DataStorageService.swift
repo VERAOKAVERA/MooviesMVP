@@ -7,52 +7,30 @@ import Foundation
 protocol AccessableRepository {}
 
 protocol DataStorageServiceProtocol {
-    func save(object: Film)
-    func get() -> Film
+    func save(object: [Movie], movieType: MoviesType)
+    func get(movieType: MoviesType) -> [Movie]
+    func removeAll()
 }
 
 // DataStorageService
 final class DataStorageService: DataStorageServiceProtocol {
-    private let repository = Repository(dataBase: RealmMovies())
+    private let repository = Repository(dataBase: CoreDataMovies())
 
-    func save(object: Film) {
-        repository.save(obj: object)
+    func save(object: [Movie], movieType: MoviesType) {
+        repository.save(obj: object, movieType: movieType)
     }
 
-    func get() -> Film {
-        return repository.getMovie()
+    func get(movieType: MoviesType) -> [Movie] {
+        return repository.getMovie(movieType: movieType)
+    }
+
+    func removeAll() {
+        repository.deleteAll()
     }
 
     // MARK: - Core Data stack
 
     static let shared = DataStorageService()
+
     private init() {}
-
-    private lazy var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "DataStorage")
-        container.loadPersistentStores(completionHandler: { storeDescription, error in
-            if let error = error as NSError? {
-                fatalError("Unresolved error \(error), \(error.userInfo)")
-            }
-        })
-        return container
-    }()
-
-    // MARK: - Core Data Saving support
-
-    var context: NSManagedObjectContext {
-        return persistentContainer.viewContext
-    }
-
-    func saveContext() {
-        let context = persistentContainer.viewContext
-        if context.hasChanges {
-            do {
-                try context.save()
-            } catch {
-                let nserror = error as NSError
-                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-            }
-        }
-    }
 }

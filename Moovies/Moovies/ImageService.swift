@@ -14,6 +14,8 @@ protocol ImageServiceProtocol {
 }
 
 final class ImageService: ImageServiceProtocol {
+    static let shared = ImageService()
+
     // MARK: - Public Methods
 
     func getImage(url: URL, completion: @escaping (UIImage) -> ()) {

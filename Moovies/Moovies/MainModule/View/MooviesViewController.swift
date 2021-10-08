@@ -89,6 +89,9 @@ extension MooviesViewController: UITableViewDataSource {
         ) as? MooviesTableViewCell else { return UITableViewCell() }
         cell.configureCell(films: presentor?.films, indexPath: indexPath)
         cell.selectionStyle = .none
+//        presentor.getImage(url: url) { image
+//            cell.setImage(image)
+//        }
         return cell
     }
 }

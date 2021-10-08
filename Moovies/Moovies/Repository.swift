@@ -14,13 +14,14 @@ protocol DatabaseProtocol {
 }
 
 final class CoreDataMovies: DatabaseProtocol {
+    private let coreDataService = CoreDataService.shared
+
     func getDescription(id: Int) -> [Description] {
         return []
     }
 
     func addDescription(object: [Description], id: Int) {}
 
-    let coreDataService = CoreDataService.shared
     func get(movieType: MoviesType) -> [Movie] {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: String(describing: CoreMovie.self))
         fetchRequest.predicate = NSPredicate(format: "movieType = %i", movieType.rawValue)
@@ -64,7 +65,7 @@ final class CoreDataMovies: DatabaseProtocol {
     }
 }
 
-final class RealmMovies: DatabaseProtocol {
+final class MoviesRealm: DatabaseProtocol {
     func getDescription(id: Int) -> [Description] {
         return []
     }

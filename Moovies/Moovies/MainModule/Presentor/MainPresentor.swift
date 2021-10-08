@@ -40,9 +40,9 @@ protocol MainViewPresentorProtocol: AnyObject {
 class MainPresentor: MainViewPresentorProtocol {
     // MARK: - Internal Properties
 
-    var films: MoviesResult
+    var films = MoviesResult(results: [], totalResults: 0, totalPages: 0, page: 0)
     var router: RouterProtocol
-    var coreDataService: DataStorageService
+    private var dataStorageService: DataStorageService
 
     // MARK: - Private Properties
 
@@ -51,22 +51,20 @@ class MainPresentor: MainViewPresentorProtocol {
 
     init(
         view: MainViewProtocol,
-        model: MoviesResult,
         service: MovieAPIServiceProtocol,
         router: RouterProtocol,
         coreDataService: DataStorageService
     ) {
         self.view = view
-        films = model
         movieAPIService = service
         self.router = router
-        self.coreDataService = coreDataService
+        dataStorageService = coreDataService
     }
 
     // MARK: - Public func
 
     func getMoviesOfType(_ type: MoviesType) {
-        let existingMovies = coreDataService.get(movieType: type)
+        let existingMovies = dataStorageService.get(movieType: type)
 
         if !existingMovies.isEmpty {
             films.results = existingMovies
@@ -83,7 +81,7 @@ class MainPresentor: MainViewPresentorProtocol {
             case let .success(filmsResults):
                 DispatchQueue.main.async {
                     self?.films.results = filmsResults
-                    self?.coreDataService.save(object: filmsResults, movieType: type)
+                    self?.dataStorageService.save(object: filmsResults, movieType: type)
                     self?.view?.reloadTable()
                 }
             }

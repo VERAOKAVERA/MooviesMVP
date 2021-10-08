@@ -21,7 +21,7 @@ final class ImageService: ImageServiceProtocol {
     func getImage(url: URL, completion: @escaping (UIImage) -> ()) {
         let imageAPIService = ImageAPIService()
         let cacheImageService = CacheImageService()
-        let proxy = Proxy(service: imageAPIService, cacheImageService: cacheImageService)
+        let proxy = Proxy(imageAPIService: imageAPIService, cacheImageService: cacheImageService)
 
         proxy.loadImage(url: url) { result in
             switch result {

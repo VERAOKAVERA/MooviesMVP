@@ -41,8 +41,6 @@ final class DataStorageService: DataStorageServiceProtocol {
     // MARK: - Core Data stack
 
     static let shared = DataStorageService()
-
-    private init() {}
 }
 
 final class DetailsDataStorageService: DataStorageServiceProtocol {
